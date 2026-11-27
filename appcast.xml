@@ -5,6 +5,34 @@
     <description>New versions of HQ.</description>
     <language>en</language>
     <item>
+      <title>HQ 0.14.1</title>
+      <pubDate>Fri, 27 Nov 2026 14:03:34 GMT</pubDate>
+      <sparkle:version>19</sparkle:version>
+      <sparkle:shortVersionString>0.14.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<h3>Changed</h3>
+<ul>
+<li>Use one set of repository instructions across agents and describe MCP profiles by what they do.</li>
+<li>The Setup Guide explains which GitHub checks its toggle controls, and VoiceOver announces the current step.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Git-ignored build and backup folders no longer create phantom deploy targets, packages, or workflows in project scans.</li>
+<li>Today&#x27;s Only on this Mac count matches the Projects filter it opens, and the CLI logins card includes signed-out tools under the correct label.</li>
+<li>Preflight shows when a project has missing account links or unavailable CLI logins.</li>
+<li>The MCP health check displays a result for the current launcher, access level and tool profile.</li>
+<li>Built-in OSV checks follow paginated results and retain earlier findings when a check is incomplete.</li>
+<li>Invalid <code>hq refresh --steps</code> values are rejected before HQ records a refresh.</li>
+<li>Registry saves use an atomic rename that works when LaunchServices is unavailable to the CLI or MCP server.</li>
+<li>Agent setup shows which installed Git can run the push guard when another copy is too old.</li>
+</ul>
+<h3>Security</h3>
+<ul>
+<li>The push guard checks the active checkout&#x27;s Git index for tracked secret filenames before deciding, including in linked worktrees.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/futogabor/hq-releases/releases/download/v0.14.1/HQ-0.14.1.zip" type="application/octet-stream" sparkle:edSignature="GZL+tSLNDbdeJIPDg603nBipzNJtBZOFBLO65coAGvNhWAIUOF18Tq0aTQ/FLvXyUE5IcIWEt60OxUfn/WE6BA==" length="20704551"/>
+    </item>
+    <item>
       <title>HQ 0.14.0</title>
       <pubDate>Fri, 27 Nov 2026 12:05:38 GMT</pubDate>
       <sparkle:version>18</sparkle:version>
