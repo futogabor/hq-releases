@@ -5,6 +5,34 @@
     <description>New versions of HQ.</description>
     <language>en</language>
     <item>
+      <title>HQ 0.14.0</title>
+      <pubDate>Fri, 27 Nov 2026 12:05:38 GMT</pubDate>
+      <sparkle:version>18</sparkle:version>
+      <sparkle:shortVersionString>0.14.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<h3>Added</h3>
+<ul>
+<li>Unified 5-step Setup Guide covering registry and privacy choices, live first scan and inline project import, local tools and permissions (including live Re-check, git 2.54+ check, and extra CLI tool folders), one-step agent setup, and background refresh. Resumes automatically if interrupted and can be reopened anytime from Help &gt; Setup Guide or Today.</li>
+<li>Built-in dependency vulnerability checks against <code>api.osv.dev</code> for common lockfiles (<code>package-lock.json</code>, <code>pnpm-lock.yaml</code>, <code>yarn.lock</code>, <code>requirements.txt</code>, <code>uv.lock</code>, <code>poetry.lock</code>, <code>Pipfile.lock</code>, <code>Cargo.lock</code>, <code>go.mod</code>, <code>Package.resolved</code>, <code>composer.lock</code>, <code>Gemfile.lock</code>, <code>pubspec.lock</code>, <code>Podfile.lock</code>) so opt-in vulnerability scanning works out of the box without installing <code>osv-scanner</code> (and still uses <code>osv-scanner</code> automatically when installed).</li>
+<li>One-step agent setup in both the Setup Guide and Agents &gt; Connect: detects Claude Code, Codex, Cursor, Antigravity and git on this Mac, lets you choose MCP, push and deploy guard, and optional cross-agent session handoffs, shows what will change, and installs or removes HQ&#x27;s entries (with <code>.hq-backup</code> backups) in one click.</li>
+<li>Core (8-tool) vs All (28-tool) MCP tool-list setting in Agents &gt; Connect and Step 4 (plus <code>--core</code> / <code>--all</code> on <code>hq-mcp</code>) to cut upfront schema context by ~70% in clients that load every tool up front (Codex, Cursor, Antigravity), propagating live via <code>tools/list_changed</code>.</li>
+<li>Per-project push and deploy guard mode on each project page: Stop (default), Warn (prints findings without blocking), or Off (logged under Agents &gt; Activity). Only you can change it, in the app.</li>
+<li>One-click **Copy Task** split button on Do First, Inbox priority items, and Setup Step 5 that copies a scoped, redacted prompt and can open the project directly in Antigravity, Cursor, VS Code, or Terminal. Antigravity is also now recognized as an editor in Resume and Project pages.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Importing newly discovered projects now also fetches their GitHub pull requests and checks immediately alongside updates and renewals.</li>
+<li>Adding or removing an extra CLI tool folder takes effect right away without relaunching HQ.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Agent session stop hooks now also prompt for a handoff report when a session leaves new uncommitted edits (without nagging on untouched dirty files) or makes a fresh repository&#x27;s first commit, and <code>report_session</code> accepts optional <code>session</code> and <code>worktree</code> fields so parallel sessions in different worktrees attach reports to the exact session that wrote them.</li>
+<li>Antigravity session hooks now match Antigravity&#x27;s documented format (flat <code>SessionStart</code> and <code>Stop</code> handler arrays, nested <code>systemMessage</code> in <code>injectSteps</code>, and <code>continuationActive</code> loop protection).</li>
+<li>Disk space alerts now point to the **Disk** pane (matching the sidebar) instead of the old Cleanup name.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/futogabor/hq-releases/releases/download/v0.14.0/HQ-0.14.0.zip" type="application/octet-stream" sparkle:edSignature="8oKiCdXSpUINTwZWB958cXDePnBWYbDMxqfirAZx5UlXjFlw7yVlMPQiQqFLxwcSXlMN79i7bIVlwDtYqUUaCw==" length="20658969"/>
+    </item>
+    <item>
       <title>HQ 0.13.0</title>
       <pubDate>Fri, 27 Nov 2026 10:39:19 GMT</pubDate>
       <sparkle:version>17</sparkle:version>
