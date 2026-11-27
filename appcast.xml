@@ -5,6 +5,18 @@
     <description>New versions of HQ.</description>
     <language>en</language>
     <item>
+      <title>HQ 0.13.0</title>
+      <pubDate>Fri, 27 Nov 2026 10:39:19 GMT</pubDate>
+      <sparkle:version>17</sparkle:version>
+      <sparkle:shortVersionString>0.13.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<h3>Fixed</h3>
+<ul>
+<li>While HQ&#x27;s first scan runs, Today and the menu bar panel show which step it is on instead of zero counts, &quot;All clear&quot; and &quot;Nothing urgent&quot;; the counts appear once the results are in.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/futogabor/hq-releases/releases/download/v0.13.0/HQ-0.13.0.zip" type="application/octet-stream" sparkle:edSignature="1gS7m1V7fduARWApVmj/CLdo6VLRU7p967BEpaDveV4e1s4TjZ4/u1AsIPr8EApVUf5CS7hRYNY6ipXIPehWAg==" length="20034023"/>
+    </item>
+    <item>
       <title>HQ 0.12.1</title>
       <pubDate>Fri, 27 Nov 2026 10:12:42 GMT</pubDate>
       <sparkle:version>16</sparkle:version>
