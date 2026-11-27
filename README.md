@@ -3,7 +3,7 @@
 Track the software projects, accounts, and AI agents on your Mac.
 
 - **[Overview & Download Page](https://futogabor.github.io/hq-releases/)** — screenshots, what HQ checks, privacy rules, and direct download
-- **[Download Latest (`HQ-0.14.1.zip`)](https://github.com/futogabor/hq-releases/releases/latest)** — Apple Silicon (M1+), macOS 15+, signed and notarized
+- **[Download Latest (`HQ-0.15.0.zip`)](https://github.com/futogabor/hq-releases/releases/latest)** — Apple Silicon (M1+), macOS 15+, signed and notarized
 - **[All Releases](https://github.com/futogabor/hq-releases/releases)** | **[Report an Issue](https://github.com/futogabor/hq-releases/issues)** | **[Buy Me a Coffee](https://buymeacoffee.com/gaborfuto)**
 
 <p align="center">

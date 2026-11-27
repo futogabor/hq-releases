@@ -5,6 +5,54 @@
     <description>New versions of HQ.</description>
     <language>en</language>
     <item>
+      <title>HQ 0.15.0</title>
+      <pubDate>Fri, 27 Nov 2026 18:29:32 GMT</pubDate>
+      <sparkle:version>20</sparkle:version>
+      <sparkle:shortVersionString>0.15.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<h3>Added</h3>
+<ul>
+<li>Built-in vulnerability checks also read <code>pdm.lock</code> and <code>bun.lock</code>.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>An agent&#x27;s or the <code>hq</code> command line&#x27;s change to a project&#x27;s folder or copies, and archiving a project, now waits for your approval in HQ.</li>
+<li><code>hq folders add</code> is refused from the command line; add scan folders in Settings.</li>
+<li>hq-mcp refuses tools outside the tool set you chose, and <code>hq call</code> checks its arguments and is logged.</li>
+<li>New setups start with the Core (8) MCP tools; existing setups keep their choice.</li>
+<li>A refresh started while another is running (the app, <code>hq refresh</code> or <code>hq daily</code>) is skipped.</li>
+<li>The push guard stops a push when git fails to read the repository. Repositories in iCloud Drive or whose git settings run a program are checked from the last scan, as before.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>The Update git item checks the git Terminal runs (Homebrew&#x27;s when installed), and suggests <code>brew install git</code> only when Homebrew is installed.</li>
+<li>Agent setup shows Antigravity&#x27;s MCP config at <code>~/.gemini/config/mcp_config.json</code>.</li>
+<li>Setting up an agent&#x27;s guard and session hooks together keeps the <code>.hq-backup</code> of the file as it was before HQ.</li>
+<li>Codex setup no longer adds a <code>SessionEnd</code> hook, which Codex does not have.</li>
+<li>Cursor&#x27;s Set Up button stays until HQ&#x27;s MCP server is connected.</li>
+<li>HQ asks before setting up agents while it runs from Downloads, Desktop, Documents or a temporary folder.</li>
+<li>Background refresh is registered again after an update, Login Items opens when macOS blocks it, and opening Settings no longer shows a Login Items error.</li>
+<li>Update checks wait until HQ is unlocked.</li>
+<li>The menu bar dot also shows when agent changes wait for your approval.</li>
+<li>Setup step 5 says no scan has run yet instead of &quot;All clear&quot;.</li>
+<li>Large <code>yarn.lock</code> files are read faster.</li>
+<li>An older, pushed <code>.env</code> deletion no longer hides a newer, unpushed <code>.env</code> commit.</li>
+<li>Acknowledging or snoozing a secret file alert works, in the app and when an agent proposes it: HQ refused it because the alert&#x27;s ID looked like a credential, and showed agents that ID as <code>[redacted]</code>.</li>
+<li>A project&#x27;s vulnerability row and push check name only the severities it has (&quot;high vulnerabilities in 3 packages&quot;, not &quot;critical or high&quot;).</li>
+</ul>
+<h3>Security</h3>
+<ul>
+<li>Session handoff hooks no longer run git in a repository whose git settings run a program.</li>
+<li>Lockfile entries that hold a password or token are no longer sent to api.osv.dev.</li>
+<li>Secrets cut off at the audit log&#x27;s length limit, nested in an agent&#x27;s arguments, or in a private key with no end line are redacted.</li>
+<li>Very deeply nested JSON in a project is skipped instead of risking a crash.</li>
+<li>Refresh only checks domains you added to a project, not ones found in its files.</li>
+<li>HQ&#x27;s own web requests refuse addresses with a login or a port other than 443, and stop at 16 MB.</li>
+<li>The push and deploy guard reads commands more carefully (a <code>cd</code> to another folder, options before <code>deploy</code>, quoted text) and covers worktrees made since the last scan.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/futogabor/hq-releases/releases/download/v0.15.0/HQ-0.15.0.zip" type="application/octet-stream" sparkle:edSignature="NszhRSPAsTWAlpwZjUFF6JEcxkyxw3yRh/CggfCEsCX82hLrzPLWVKhRXMjzfyCZEejQ1A1tAWpYNDhs8a7QBg==" length="21710667"/>
+    </item>
+    <item>
       <title>HQ 0.14.1</title>
       <pubDate>Fri, 27 Nov 2026 14:03:34 GMT</pubDate>
       <sparkle:version>19</sparkle:version>
