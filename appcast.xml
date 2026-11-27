@@ -5,6 +5,21 @@
     <description>New versions of HQ.</description>
     <language>en</language>
     <item>
+      <title>HQ 0.16.0</title>
+      <pubDate>Fri, 27 Nov 2026 19:51:36 GMT</pubDate>
+      <sparkle:version>21</sparkle:version>
+      <sparkle:shortVersionString>0.16.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<h3>Fixed</h3>
+<ul>
+<li>TLS certificate expiry checks work with the OpenSSL tool shipped with macOS.</li>
+<li>Full and single-project refreshes report failed domain and certificate expiry checks and keep the last known dates for reminders.</li>
+<li><code>bin/hq</code> uses the newest available HQ build for both CLI and MCP commands, including the installed app.</li>
+<li>Release builds check the bundled app and CLI against the tagged source, and publishing updates the source branch and tag together.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/futogabor/hq-releases/releases/download/v0.16.0/HQ-0.16.0.zip" type="application/octet-stream" sparkle:edSignature="agpoWCIIjKAJzWHM3DfT2xPn6QeXAGzZ0ms71q32fzxD0BiAbh5Y8AFNMBrNGA3O68mcdQalhT3e+A5Th6fPCg==" length="21723302"/>
+    </item>
+    <item>
       <title>HQ 0.15.0</title>
       <pubDate>Fri, 27 Nov 2026 18:29:32 GMT</pubDate>
       <sparkle:version>20</sparkle:version>

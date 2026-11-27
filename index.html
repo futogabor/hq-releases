@@ -63,7 +63,7 @@
           </span>
         </button>
 
-        <a class="btn btn-primary" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.15.0/HQ-0.15.0.zip">
+        <a class="btn btn-primary" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.16.0/HQ-0.16.0.zip">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
@@ -82,7 +82,7 @@
         <div class="hero-badge">
           <img class="hero-badge-icon theme-only-light" src="assets/icon-light.png" width="20" height="20" alt="">
           <img class="hero-badge-icon theme-only-dark" src="assets/icon-dark.png" width="20" height="20" alt="">
-          <span id="hero-release-badge">v0.15.0 · macOS 15+ · Apple Silicon · 20.7 MB</span>
+          <span id="hero-release-badge">v0.16.0 · macOS 15+ · Apple Silicon · 20.7 MB</span>
         </div>
 
         <h1>Track the software projects, accounts, and AI agents on your Mac.</h1>
@@ -92,13 +92,13 @@
         </p>
 
         <div class="hero-cta">
-          <a class="btn btn-primary btn-lg" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.15.0/HQ-0.15.0.zip">
+          <a class="btn btn-primary btn-lg" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.16.0/HQ-0.16.0.zip">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
               <polyline points="7 10 12 15 17 10"/>
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
-            Download HQ <span data-release-version>v0.15.0</span>
+            Download HQ <span data-release-version>v0.16.0</span>
           </a>
           <a class="btn btn-secondary btn-lg" href="#install">Install &amp; Release Notes</a>
         </div>
@@ -164,7 +164,7 @@
                 </div>
                 <div class="shot-caption">
                   <span><strong>Today:</strong> Project counts, pending agent changes, active CLI sessions, monthly renewals, and the top items needing attention.</span>
-                  <span class="demo-note">Rendered from HQ v0.15.0 with fictional sample data.</span>
+                  <span class="demo-note">Rendered from HQ with fictional sample data.</span>
                 </div>
               </div>
             </div>
@@ -433,7 +433,7 @@
             <span class="feature-tag">Vulnerability checks</span>
             <h3>Lockfile advisories and EOL dates</h3>
             <p>
-              Opt-in built-in OSV scanning checks 14 lockfile formats (npm, pnpm, yarn, Python, Rust, Go, Swift, Ruby, PHP, Dart) against <code>api.osv.dev</code> — or uses <code>osv-scanner</code> automatically when installed — alongside <code>endoflife.date</code> runtime checks.
+              Opt-in built-in OSV scanning checks 17 lockfile formats (npm, pnpm, yarn, Bun, Python, Rust, Go, Swift, CocoaPods, Ruby, PHP, Dart) against <code>api.osv.dev</code> — or uses <code>osv-scanner</code> automatically when installed — alongside <code>endoflife.date</code> runtime checks.
             </p>
           </article>
 
@@ -523,8 +523,8 @@
             <ul>
               <li>Query project briefs, preflight verdicts, alerts, renewals, and CLI login mismatches without rescanning disk.</li>
               <li>Use the <strong>Core (8 tools)</strong> profile to keep startup context small, or switch to <strong>All (28 tools)</strong> anytime.</li>
-              <li>Add dated project notes, update project status, and record optional cross-agent session handoff reports.</li>
-              <li>Every registry edit is a git commit with a <code>Via:</code> trailer that you can undo with <code>Cmd-Z</code>.</li>
+              <li>Add dated project notes, update non-archived project status, and record optional cross-agent session handoff reports.</li>
+              <li>Every registry edit is a git commit with a <code>Via:</code> trailer that you can revert under <strong>Agents &gt; Changes</strong> (or <code>hq revert</code>).</li>
             </ul>
           </div>
 
@@ -532,7 +532,7 @@
             <span class="tier-label warn">Waits for approval</span>
             <h3>What requires confirmation in HQ.app</h3>
             <ul>
-              <li>Changes to linked accounts, live site URLs, domains, and subscription renewals wait in <strong>Agents &gt; Changes</strong> until you approve or reject them.</li>
+              <li>Changes to linked accounts, live site URLs, domains, project paths, archiving, and subscription renewals wait in <strong>Agents &gt; Changes</strong> until you approve or reject them.</li>
               <li>The <code>hq</code> CLI follows the same rules as MCP — an agent with shell access cannot self-approve changes or change guard modes.</li>
               <li>Strings originating from repositories are marked as untrusted data to reduce prompt-injection risk.</li>
               <li>Edits made directly in your registry folder outside HQ are detected and shown as a diff before being trusted.</li>
@@ -687,18 +687,18 @@
           <div class="install-box">
             <h3>Install</h3>
             <ol class="install-steps">
-              <li><strong>Download</strong> the latest <code data-release-title>HQ 0.15.0</code> zip archive below.</li>
+              <li><strong>Download</strong> the latest <code data-release-title>HQ 0.16.0</code> zip archive below.</li>
               <li><strong>Open the zip</strong> to unpack <code>HQ.app</code> and move it to your <strong>Applications</strong> folder.</li>
               <li><strong>Open HQ</strong> and walk through the 5-step Setup Guide.</li>
             </ol>
             <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
-              <a class="btn btn-primary btn-lg" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.15.0/HQ-0.15.0.zip">
+              <a class="btn btn-primary btn-lg" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.16.0/HQ-0.16.0.zip">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                   <polyline points="7 10 12 15 17 10"/>
                   <line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
-                Download <span data-release-title>HQ 0.15.0</span> (.zip)
+                Download <span data-release-title>HQ 0.16.0</span> (.zip)
               </a>
               <a class="btn btn-secondary btn-lg" href="https://github.com/futogabor/hq-releases/releases/latest">View on GitHub</a>
             </div>
@@ -709,26 +709,16 @@
 
           <div class="release-notes-box">
             <div class="release-notes-head">
-              <h3>Latest release: <span data-release-title>HQ 0.15.0</span></h3>
+              <h3>Latest release: <span data-release-title>HQ 0.16.0</span></h3>
               <span id="release-notes-meta" class="release-notes-meta">Nov 27, 2026 · 20.7 MB · macOS 15+</span>
             </div>
             <div id="release-notes-body" class="release-notes-body">
-              <h3>Changed</h3>
-              <ul>
-                <li>Use one set of repository instructions across agents and describe MCP profiles by what they do.</li>
-                <li>The Setup Guide explains which GitHub checks its toggle controls, and VoiceOver announces the current step.</li>
-              </ul>
               <h3>Fixed</h3>
               <ul>
-                <li>Git-ignored build and backup folders no longer create phantom deploy targets, packages, or workflows in project scans.</li>
-                <li>Today's Only on this Mac count matches the Projects filter it opens, and the CLI logins card includes signed-out tools under the correct label.</li>
-                <li>Preflight shows when a project has missing account links or unavailable CLI logins.</li>
-                <li>Built-in OSV checks follow paginated results and retain earlier findings when a check is incomplete.</li>
-                <li>Agent setup shows which installed Git can run the push guard when another copy is too old.</li>
-              </ul>
-              <h3>Security</h3>
-              <ul>
-                <li>The push guard checks the active checkout's Git index for tracked secret filenames before deciding, including in linked worktrees.</li>
+                <li>TLS certificate expiry checks work with the OpenSSL tool shipped with macOS.</li>
+                <li>Full and single-project refreshes report failed domain and certificate expiry checks and keep the last known dates for reminders.</li>
+                <li><code>bin/hq</code> uses the newest available HQ build for both CLI and MCP commands, including the installed app.</li>
+                <li>Release builds check the bundled app and CLI against the tagged source, and publishing updates the source branch and tag together.</li>
               </ul>
             </div>
             <div class="release-notes-foot">
@@ -797,7 +787,7 @@
             <summary>How do I uninstall HQ or disconnect my AI agents?</summary>
             <div class="faq-answer">
               <p>
-                Open <strong>Agents &gt; Connect</strong> inside HQ and click <strong>Remove HQ from Agents</strong> to remove HQ's MCP entries and guard hooks. Then quit HQ and drag <code>HQ.app</code> from Applications to the Trash. Your YAML registry in <code>~/HQ</code> remains untouched.
+                Open <strong>Agents &gt; Connect</strong> inside HQ and click <strong>Remove HQ from Agents</strong> to remove HQ's guard hooks, session hooks, and Claude Code/Codex MCP entries (for Cursor or Antigravity, remove HQ's MCP entry in those apps). Then quit HQ and drag <code>HQ.app</code> from Applications to the Trash. Your YAML registry in <code>~/HQ</code> remains untouched.
               </p>
             </div>
           </details>
@@ -815,7 +805,7 @@
       </div>
 
       <nav class="footer-links" aria-label="Footer">
-        <a data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.15.0/HQ-0.15.0.zip">Download latest</a>
+        <a data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.16.0/HQ-0.16.0.zip">Download latest</a>
         <a href="https://github.com/futogabor/hq-releases/releases">Releases</a>
         <a href="https://github.com/futogabor/hq-releases/issues">Feedback &amp; Issues</a>
         <a href="https://buymeacoffee.com/gaborfuto" rel="noopener">Buy Me a Coffee</a>
