@@ -5,6 +5,19 @@
     <description>New versions of HQ.</description>
     <language>en</language>
     <item>
+      <title>HQ 0.12.1</title>
+      <pubDate>Fri, 27 Nov 2026 10:12:42 GMT</pubDate>
+      <sparkle:version>16</sparkle:version>
+      <sparkle:shortVersionString>0.12.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<h3>Fixed</h3>
+<ul>
+<li>HQ&#x27;s window opens again on the launch where HQ asks whether to check for updates automatically; before, only the question appeared.</li>
+<li>Files a repository&#x27;s .gitignore leaves out, such as old reports and copies, no longer give a project hosts, services or a Supabase project it does not use; folders without git are read as before.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/futogabor/hq-releases/releases/download/v0.12.1/HQ-0.12.1.zip" type="application/octet-stream" sparkle:edSignature="sWU38eCu+SY/3EQ1ixe0TMaLorJRIEEF8zM2ANIcNfpdjV7mmqvOG6397OCnd+ldO5oYbQZzuqK4pY+vhDtDCg==" length="20010010"/>
+    </item>
+    <item>
       <title>HQ 0.12.0</title>
       <pubDate>Fri, 27 Nov 2026 09:14:59 GMT</pubDate>
       <sparkle:version>15</sparkle:version>
