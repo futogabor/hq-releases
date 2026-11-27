@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>HQ</title>
+    <description>New versions of HQ.</description>
+    <language>en</language>
+    <item>
+      <title>HQ 0.12.0</title>
+      <pubDate>Fri, 27 Nov 2026 09:14:59 GMT</pubDate>
+      <sparkle:version>15</sparkle:version>
+      <sparkle:shortVersionString>0.12.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<h3>Added</h3>
+<ul>
+<li>Accounts now has a live CLI Logins tab showing every installed platform CLI session, active identity, scopes/resources, parse errors (with one-click dump command), and per-project authentication overrides.</li>
+<li>Per-project and per-service Auth Mode (<code>cli</code>, <code>project-token</code>, <code>ci</code>) on the project page and in project links. Only Auth Mode stops HQ comparing the platform CLI&#x27;s login with the project&#x27;s account; token variables, direnv, CI deploy jobs and deployment bots found in the project show as a hint on the failed check. Cloudflare&#x27;s per-environment <code>account_id</code>s are read, and the deploy hook lets a deploy through when its own command sets the platform&#x27;s token or login folder.</li>
+<li>Antigravity MCP setup instructions in Agents &gt; Connect, transient launcher path warnings (DerivedData, Downloads, disk images), and automatic JSON Schema validation in &quot;Test hq-mcp&quot;.</li>
+<li>Settings &gt; Tools &amp; Exceptions tab to manage extra CLI binary folders (<code>toolDirs</code>) and review or remove accepted secret files.</li>
+<li>The push and deploy guard now covers every agent app and git. In Agents, &quot;Check every git push on this Mac&quot; makes git run HQ&#x27;s push check before every push from any app or terminal (git 2.54 or later; HQ lists any older git that skips it), and Codex, Cursor and Antigravity get the same stop-before-deploy hook as Claude Code.</li>
+<li>A logbook of agent sessions. Turn on reading Claude Code or Codex sessions in Settings, Agent Sessions, and each project page shows which agent worked on it, when, on which branch, with how many turns and commits. HQ keeps times, folders, branches and counts, never what you or the agent wrote. <code>hq session list</code> shows it too.</li>
+<li>Agents can ask HQ for a brief on a project (<code>get_brief</code>, <code>hq brief</code>): the last sessions from any app and their reports, work not committed or not merged, and the push check, in about 500 tokens.</li>
+<li>Agents can file a short report when they finish (<code>report_session</code>: done, left, broken, decided). The next agent, in any app, gets it in its brief; the project page shows it with Delete, and Resume offers what is left as the next step.</li>
+<li>Session hooks for Claude Code, Codex, Cursor and Antigravity (Settings, Agent Sessions, or <code>hq session setup --for &lt;app&gt;</code>): the agent gets the brief when it starts, and is asked once for a report when it made commits.</li>
+<li>Inbox items under Agent sessions: two agents working in the same checkout, uncommitted work no agent session touched in a week, worktrees merged but not removed, and sessions that made commits and left no report.</li>
+<li>Pull requests and checks on GitHub, read with your gh login at each refresh (Settings, Network, to turn off). Each project page has a GitHub card: the checks on the default branch, open pull requests with the agent app that made each (Codex, Claude Code, Cursor, Copilot, v0 or Lovable, told by their branch names and accounts), and branches pushed without one. Failing checks on a live project&#x27;s default branch are a serious alert; open pull requests and agent branches without one are listed in the Inbox. Agents get the same in the brief, <code>get_project</code> and <code>list_projects</code>, and <code>hq projects</code> and <code>hq refresh --steps github</code> show it. When an agent asks about a project and what HQ has from GitHub is more than 10 minutes old, HQ reads that repository again first.</li>
+<li>Today has a Get HQ ready list until the Mac is set up: git, GitHub&#x27;s gh installed and signed in, folders macOS kept HQ out of (with buttons to Files and Folders and Full Disk Access), and CLIs signed into another account than a project uses. Each open item has its command to copy; HQ installs and signs in nothing itself. Hide keeps it away until something else needs doing.</li>
+<li>Updates through Sparkle for HQ downloaded from its releases page: HQ &gt; Check for Updates, and a daily check Sparkle asks about first (Settings, Network to change it). Each check and download is in the network log. Debug builds never check.</li>
+<li>Each project names one thing to do first: its most urgent serious alert and the fix, in a new Do first column on Projects, at the top of the project page (with Copy Fix), in <code>hq projects</code>, in the brief, and in what agents get from <code>list_projects</code>.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Agents get much shorter answers from HQ: projects as one short row each with archived ones left out unless asked, alerts as counts plus the 15 most urgent (narrow by project or ask for more), and only the tools the Agents setting lets them call, updated without reconnecting. The app, <code>hq projects</code> and <code>hq alerts</code> keep the full lists.</li>
+<li>An agent asking about a project (<code>get_project</code>, <code>preflight</code>, <code>hq preflight</code>) gets its git read again when HQ&#x27;s last scan is more than 5 minutes old, so new commits and uncommitted files show up without a refresh. Repositories in iCloud Drive keep the scan&#x27;s facts.</li>
+<li>Restructured the macOS app with a resizable grouped sidebar that collapses into an icon rail (6 panes across Workspace, Infrastructure, and Automation), unified inline tab bars and card/badge design system, a single bottom status bar, per-pane Back/Forward history with a Projects back button on project pages, and one-click &quot;Copy Fix&quot; buttons on alerts and preflight items.</li>
+<li>Redesigned Today to combine the summary KPI tiles and disk/alert charts with live CLI sessions, deduplicated priority actions, recent projects with preflight readiness, and upcoming renewals; redesigned Inbox with Priority / All / Snoozed modes and toolbar search.</li>
+<li>Vulnerabilities in dev and build tooling (test runners, bundlers, linters) are no longer listed as alerts, since they run on this Mac and not in what you ship. Turn them back on in Settings, Tools &amp; Exceptions; the project preview still counts them, and the Risk counts no longer include build tooling.</li>
+<li>Hand Off for an agent includes the project&#x27;s last agent sessions and reports, and asks the agent to file a report when it finishes.</li>
+<li>Redesigned the Project Workspace into three focused tabs (Overview &amp; Preflight with inline push/deploy checks and instant-save status picker, Notes &amp; Details with inline Agent Hand-Off, and Code &amp; Infra), while making the Projects table inspector a clean read-only preview.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fixed invalid OpenAPI tool schemas (<code>list_projects</code>, <code>get_project</code>, <code>add_account</code>, <code>update_account</code>) and removed undeclared <code>structuredContent</code> from MCP tool results that caused strict MCP clients to reject HQ on connect.</li>
+<li>Added a SQLite busy timeout, let HQ start when it cannot change its data folder&#x27;s permissions but the folder is already private, and a fallback to <code>~/HQ</code> when the registry-location pointer is missing so <code>hq-mcp</code> connects reliably even while HQ.app is refreshing.</li>
+<li>Fixed false push-failure flags on SSH GitHub remotes and local CLI package detection when global CLIs are absent. The Firebase check now judges the account <code>firebase deploy</code> uses by default, and warns with the <code>firebase login:use</code> fix when only another signed-in account can see the project.</li>
+<li>Prevented corrupt local <code>settings.json</code> files from silently wiping configured tool folders or accepted secret files on save.</li>
+<li>The alert for work not pushed counts the current branch&#x27;s commits once and names the branch (&quot;2 commits on main not pushed&quot;, not &quot;2 commits and branches main not pushed&quot;), and so do the Git column on Projects, <code>hq projects</code> and the menu bar.</li>
+<li>Times in checks say &quot;just now&quot; and &quot;1 minute ago&quot; instead of &quot;0 minutes ago&quot; and &quot;1 minutes ago&quot;.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/futogabor/hq-releases/releases/download/v0.12.0/HQ-0.12.0.zip" type="application/octet-stream" sparkle:edSignature="b2XojVAnLKOS2LeAjlT/lFuQe+jiLT3sPqTlR671XA9teihFFFG9OptSALljhZkFaWCXENmgECpxcbg6k1HEAg==" length="19996582"/>
+    </item>
+  </channel>
+</rss>
