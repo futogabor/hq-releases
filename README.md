@@ -1,84 +1,46 @@
-# HQ
+# HQ (Helios Query)
 
-HQ (Helios Query) is a Mac app that keeps track of every software project on
-your Mac: where each one lives, what it runs on, which accounts and logins it
-depends on, what is out of date or vulnerable, what exists only on this Mac,
-and what renews when. It runs routine checks in the background without spending
-AI tokens, and lets your AI coding agents (Claude Code, Codex, Cursor,
-Antigravity and others) ask the same questions through its MCP server and
-push/deploy guard.
+Track the software projects, accounts, and AI agents on your Mac.
 
-It is for people who build software on their Mac with AI coding tools — whether
-you juggle several agents at once or want one clear place to see what needs
-attention across your projects.
+- **[Overview & Download Page](https://futogabor.github.io/hq-releases/)** — screenshots, what HQ checks, privacy rules, and direct download
+- **[Download Latest (`HQ-0.14.1.zip`)](https://github.com/futogabor/hq-releases/releases/latest)** — Apple Silicon (M1+), macOS 15+, signed and notarized
+- **[All Releases](https://github.com/futogabor/hq-releases/releases)** | **[Report an Issue](https://github.com/futogabor/hq-releases/issues)**
 
-## Download
+<p align="center">
+  <a href="https://futogabor.github.io/hq-releases/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/screens/today-dark.png">
+      <source media="(prefers-color-scheme: light)" srcset="assets/screens/today-light.png">
+      <img alt="HQ Today view showing projects, active CLI logins, renewals, and prioritized alerts" src="assets/screens/today-light.png" width="880">
+    </picture>
+  </a>
+</p>
 
-**[Download the latest version](https://github.com/futogabor/hq-releases/releases/latest)**:
-on that page, click `HQ-<version>.zip` under Assets.
+## What HQ does
 
-You need a Mac with Apple silicon (M1 or later) and macOS 15 or later. HQ is
-signed with a Developer ID and notarized by Apple, so it opens like any other
-app.
+HQ (Helios Query) is a native Mac app, command-line tool, and local MCP server that keeps track of every software project on your Mac:
+
+- **Push & deploy preflight:** Compares project configs (`wrangler.toml`, `firebase.json`, `supabase`, `fly.toml`, `netlify.toml`, `vercel.json`, git remotes) against your active CLI sessions and commit email before a push or deploy runs.
+- **Secret & vulnerability checks:** Flags `.env` and credential files in git or git history by filename only (never opening them), plus opt-in built-in OSV vulnerability checks across 14 lockfile formats and `endoflife.date` runtime tracking.
+- **Accounts, CLI logins & renewals:** Shows active logins across 18+ platform CLIs (`gh`, `wrangler`, `supabase`, `firebase`, `vercel`, `aws`, `flyctl`, `netlify`, and more), subscription renewals, RDAP domain expiry, and TLS certificate dates.
+- **Local MCP server & push guard for AI agents:** Optional setup for **Claude Code**, **Codex**, **Cursor**, **Antigravity**, and **git 2.54+** with a compact MCP server (`Core` 8-tool mode or `All` 28 tools), push/deploy guard hooks, and optional cross-agent session handoffs — without spending AI tokens on routine checks.
+- **Disk map & cleanup:** Zoomable folder size map and a list of rebuildable build folders (`node_modules`, `DerivedData`, `.next`, `target`); moves git-ignored folders to the Trash only after you confirm.
 
 ## Install
 
-1. Open the zip. It unpacks `HQ.app`.
-2. Move `HQ.app` to your Applications folder.
-3. Open it.
+1. Open the **[Overview & Download Page](https://futogabor.github.io/hq-releases/)** or download `HQ-<version>.zip` from **[Latest Release](https://github.com/futogabor/hq-releases/releases/latest)**.
+2. Unzip `HQ.app` and move it to your **Applications** folder.
+3. Open **HQ** and follow the 5-step Setup Guide.
 
-HQ updates itself. On the second launch it asks whether to check for updates
-automatically, and HQ > Check for Updates looks right away.
-
-## First run (5-step Setup Guide)
-
-Opening HQ walks you through one guided setup (you can reopen it anytime from
-**Help > Setup Guide**):
-
-1. **Folders & privacy:** Choose where HQ keeps its registry (`~/HQ` by
-   default, plain YAML files in its own git repo), which folders to scan, and
-   whether to enable GitHub PR/CI checks and built-in dependency vulnerability
-   lookups (`api.osv.dev` — no extra tool required).
-2. **Scan & projects:** Watch the first scan step by step, then pick which
-   discovered projects to track.
-3. **Tools & logins:** Optional checks for Apple Command Line Tools, GitHub's
-   `gh` CLI (for PRs, CI checks and Dependabot), macOS folder permissions,
-   platform CLI logins, and git 2.54+ for the machine-wide pre-push guard.
-   Includes live **Check Again** and extra CLI PATH folders (for nvm/volta/mise).
-4. **Connect agents:** One-click setup for Claude Code, Codex, Cursor,
-   Antigravity and git — choose MCP (with **Core** 8-tool mode to save context
-   tokens, or **All** 28 tools), the push/deploy guard, and optional
-   cross-agent session handoffs. Nothing changes until you click **Set Up**,
-   and HQ keeps `.hq-backup` copies of edited hooks files.
-5. **Finish:** Turn on open-at-login and background refresh, and see your first
-   **Do First** item with one-click **Copy Fix** or **Copy Task** (including
-   launching the project directly in Antigravity, Cursor, VS Code or Terminal).
-
-Projects built purely in cloud tools (Lovable, Bolt, v0) show up through their
-GitHub pull requests and branches once cloned locally or added to the registry
-with their GitHub repository.
+Requires a Mac with Apple silicon (M1 or later) and macOS 15 or later. HQ is signed with a Developer ID, notarized by Apple, and updates via Sparkle (EdDSA-verified).
 
 ## What HQ reads, and what it never does
 
-- **Read-only on your projects.** It never moves, renames or deletes
-  anything in them. The one exception is in Disk: moving a git-ignored
-  build or cache folder to the Trash after you confirm.
-- **No secrets.** `.env`, key, token and credential files are recorded by
-  name, never opened. HQ never stores passwords, tokens or keys.
-- **Stays on your Mac.** No HQ account, no analytics, no tracking. Every
-  network request is listed in Settings > Network: GitHub through your own
-  `gh` login, the platform CLIs you already use (to see which account each
-  is logged in to), opt-in vulnerability lookups (`api.osv.dev`, built-in or
-  via `osv-scanner` if installed), end-of-life dates (`endoflife.date`),
-  domain and certificate expiry, and update checks to this repository.
-- **Agents ask, you decide.** Changes an agent proposes to accounts, links
-  and renewals wait for your approval in the app. Every change to the
-  registry is a git commit you can revert.
+- **Read-only on your projects:** Never moves, renames, or deletes anything inside scanned folders (except moving git-ignored build folders to the Trash when you confirm).
+- **No secrets:** `.env`, key, token, and credential files are recorded by name and never opened. HQ never stores passwords, tokens, or API keys.
+- **Stays on your Mac:** No HQ account and no telemetry. Your registry is plain YAML files in your own local git repo (`~/HQ` by default), and every outbound request is listed in **Settings > Network**.
+- **Agents ask, you decide:** Proposed changes to accounts, links, URLs, and renewals wait for your approval in HQ.app, and every registry change is a revertible git commit.
 
-## Feedback
+## About this repository
 
-Found a bug, or something unclear? [Open an issue](https://github.com/futogabor/hq-releases/issues).
-
-## Versions
-
-What changed in each version: [Releases](https://github.com/futogabor/hq-releases/releases).
+This repository hosts HQ's public introduction page (GitHub Pages), signed release archives on GitHub Releases, the Sparkle update feed (`appcast.xml`), and public issue tracking.

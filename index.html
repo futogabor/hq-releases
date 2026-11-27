@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try {
+      var s = localStorage.getItem('color-scheme');
+      if (s === 'light' || s === 'dark') {
+        document.querySelector('meta[name="color-scheme"]').content = s;
+      }
+    } catch (e) {}
+  </script>
+  <title>HQ (Helios Query) — Local project tracker, push guard, and MCP server for Mac</title>
+  <meta name="description" content="HQ is a native Mac app that tracks local software projects, checks CLI logins before you push or deploy, watches for vulnerabilities and renewals, and connects to Claude Code, Codex, Cursor, and Antigravity.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HQ (Helios Query) — Local project tracker, push guard, and MCP server for Mac">
+  <meta property="og:description" content="Track local repositories, verify CLI logins and secret files before pushing or deploying, monitor renewals, and share project state with AI coding tools locally.">
+  <meta property="og:image" content="https://futogabor.github.io/hq-releases/assets/screens/today-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/icon-light.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">
+        <img class="brand-icon theme-only-light" src="assets/icon-light.png" srcset="assets/icon-light.png 1x, assets/icon-light@2x.png 2x" width="30" height="30" alt="">
+        <img class="brand-icon theme-only-dark" src="assets/icon-dark.png" srcset="assets/icon-dark.png 1x, assets/icon-dark@2x.png 2x" width="30" height="30" alt="">
+        <span class="brand-name">HQ</span>
+        <span class="brand-sub">Helios Query</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#checks">What it checks</a>
+        <a href="#features">Features</a>
+        <a href="#agents">AI Agents</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#install">Download</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" type="button" title="Toggle light or dark appearance">
+          <span class="theme-only-light">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            <span class="sr-only">Switch to dark theme</span>
+          </span>
+          <span class="theme-only-dark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+            </svg>
+            <span class="sr-only">Switch to light theme</span>
+          </span>
+        </button>
+
+        <a class="btn btn-primary" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.14.1/HQ-0.14.1.zip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="top" class="hero">
+      <div class="container">
+        <div class="hero-icon-wrap">
+          <img class="hero-app-icon theme-only-light" src="assets/icon-light.png" srcset="assets/icon-light.png 1x, assets/icon-light@2x.png 2x" width="84" height="84" alt="HQ (Helios Query) Mac app icon">
+          <img class="hero-app-icon theme-only-dark" src="assets/icon-dark.png" srcset="assets/icon-dark.png 1x, assets/icon-dark@2x.png 2x" width="84" height="84" alt="HQ (Helios Query) Mac app icon">
+        </div>
+
+        <div class="hero-badge">
+          <span class="hero-badge-dot" aria-hidden="true"></span>
+          <span id="hero-release-badge">v0.14.1 · macOS 15+ · Apple Silicon · 19.7 MB</span>
+        </div>
+
+        <h1>Track the software projects, accounts, and AI agents on your Mac.</h1>
+
+        <p class="hero-lead">
+          HQ (Helios Query) is a native Mac app, CLI, and local MCP server. It scans your repositories, checks which accounts your CLIs are logged into before you push or deploy, watches for vulnerabilities and upcoming renewals, and shares that state with Claude Code, Codex, Cursor, and Antigravity without spending AI tokens on routine checks.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.14.1/HQ-0.14.1.zip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download HQ <span data-release-version>v0.14.1</span>
+          </a>
+          <a class="btn btn-secondary btn-lg" href="#install">Install &amp; Release Notes</a>
+          <a class="btn btn-secondary btn-lg" href="https://github.com/futogabor/hq-releases/releases">All Releases</a>
+        </div>
+
+        <ul class="hero-meta" aria-label="Key facts">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Developer ID signed &amp; Apple notarized
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Read-only on scanned project folders
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Never opens .env or credential files
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            No HQ account, no telemetry, updates via Sparkle
+          </li>
+        </ul>
+
+        <!-- Interactive Screenshot Showcase -->
+        <div class="showcase" aria-label="HQ app screenshots">
+          <div class="tabs-bar">
+            <div class="tablist" focusgroup="tablist nomemory" role="tablist" aria-label="HQ workspace screens">
+              <button type="button" role="tab" id="tab-today" aria-selected="true" focusgroupstart>Today</button>
+              <button type="button" role="tab" id="tab-preflight" aria-selected="false">Push &amp; Deploy Preflight</button>
+              <button type="button" role="tab" id="tab-inbox" aria-selected="false">Inbox &amp; Triage</button>
+              <button type="button" role="tab" id="tab-logins" aria-selected="false">Live CLI Logins</button>
+              <button type="button" role="tab" id="tab-agents" aria-selected="false">Agents &amp; Audit</button>
+              <button type="button" role="tab" id="tab-disk" aria-selected="false">Disk Cleanup</button>
+            </div>
+          </div>
+
+          <div class="tabpanels">
+            <!-- Panel 1: Today (Hero LCP image) -->
+            <div role="tabpanel" aria-labelledby="tab-today">
+              <div class="tabpanel-inner" data-screen-title="Today — Overview">
+                <div class="window-frame">
+                  <div class="window-bar">
+                    <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <span class="window-title">HQ — Today</span>
+                    <button type="button" class="window-zoom-btn" data-open-lightbox>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+                        <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+                      </svg>
+                      Inspect
+                    </button>
+                  </div>
+                  <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size Today screenshot">
+                    <img class="shot-img theme-only-light" src="assets/screens/today-light.png" width="1920" height="1200" fetchpriority="high" alt="HQ Today view in light mode showing project counts, serious alerts, local-only repos, monthly spend, disk free, active CLI logins, and prioritized items">
+                    <img class="shot-img theme-only-dark" src="assets/screens/today-dark.png" width="1920" height="1200" fetchpriority="high" alt="HQ Today view in dark mode showing project counts, serious alerts, local-only repos, monthly spend, disk free, active CLI logins, and prioritized items">
+                  </button>
+                </div>
+                <div class="shot-caption">
+                  <span><strong>Today:</strong> Project counts, pending agent changes, active CLI sessions, monthly renewals, and the top items needing attention.</span>
+                  <span class="demo-note">Rendered from HQ v0.14.1 with fictional sample data.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 2: Project Preflight -->
+            <div role="tabpanel" aria-labelledby="tab-preflight" hidden="until-found">
+              <div class="tabpanel-inner" data-screen-title="Project page — Before you push or deploy">
+                <div class="window-frame">
+                  <div class="window-bar">
+                    <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <span class="window-title">HQ — Meridian Store · Overview &amp; Preflight</span>
+                    <button type="button" class="window-zoom-btn" data-open-lightbox>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+                        <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+                      </svg>
+                      Inspect
+                    </button>
+                  </div>
+                  <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size Preflight screenshot">
+                    <img class="shot-img theme-only-light" src="assets/screens/preflight-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Project page in light mode blocking a Cloudflare deploy because wrangler is logged into a personal account instead of the client organization">
+                    <img class="shot-img theme-only-dark" src="assets/screens/preflight-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Project page in dark mode blocking a Cloudflare deploy because wrangler is logged into a personal account instead of the client organization">
+                  </button>
+                </div>
+                <div class="shot-caption">
+                  <span><strong>Before you push or deploy:</strong> Flags mismatches between project deploy configs and active CLI logins for Cloudflare, Netlify, Vercel, Firebase, Supabase, Fly.io, and GitHub.</span>
+                  <span class="demo-note">Click image to enlarge.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Inbox -->
+            <div role="tabpanel" aria-labelledby="tab-inbox" hidden="until-found">
+              <div class="tabpanel-inner" data-screen-title="Inbox — Priority triage across projects">
+                <div class="window-frame">
+                  <div class="window-bar">
+                    <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <span class="window-title">HQ — Inbox</span>
+                    <button type="button" class="window-zoom-btn" data-open-lightbox>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+                        <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+                      </svg>
+                      Inspect
+                    </button>
+                  </div>
+                  <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size Inbox screenshot">
+                    <img class="shot-img theme-only-light" src="assets/screens/inbox-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Inbox in light mode listing expiring domains, deleted secret files still in git history, local-only repositories, wrong CLI logins, and high vulnerabilities">
+                    <img class="shot-img theme-only-dark" src="assets/screens/inbox-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Inbox in dark mode listing expiring domains, deleted secret files still in git history, local-only repositories, wrong CLI logins, and high vulnerabilities">
+                  </button>
+                </div>
+                <div class="shot-caption">
+                  <span><strong>Inbox:</strong> Groups serious alerts across repositories — expiring domains, secret files in git history, local-only repos, runtime vulnerabilities, and login mismatches.</span>
+                  <span class="demo-note">Click image to enlarge.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 4: Live CLI Logins -->
+            <div role="tabpanel" aria-labelledby="tab-logins" hidden="until-found">
+              <div class="tabpanel-inner" data-screen-title="Accounts — Installed CLI sessions and project overrides">
+                <div class="window-frame">
+                  <div class="window-bar">
+                    <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <span class="window-title">HQ — Accounts · CLI Logins</span>
+                    <button type="button" class="window-zoom-btn" data-open-lightbox>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+                        <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+                      </svg>
+                      Inspect
+                    </button>
+                  </div>
+                  <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size CLI Logins screenshot">
+                    <img class="shot-img theme-only-light" src="assets/screens/logins-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Accounts CLI Logins tab in light mode showing active sessions for wrangler, flyctl, gh, netlify, supabase, and signed-out vercel">
+                    <img class="shot-img theme-only-dark" src="assets/screens/logins-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Accounts CLI Logins tab in dark mode showing active sessions for wrangler, flyctl, gh, netlify, supabase, and signed-out vercel">
+                  </button>
+                </div>
+                <div class="shot-caption">
+                  <span><strong>Live CLI Logins:</strong> Shows which account each installed cloud CLI is logged into, the resources it sees, and per-project Auth Mode overrides.</span>
+                  <span class="demo-note">Click image to enlarge.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 5: Agents & Audit -->
+            <div role="tabpanel" aria-labelledby="tab-agents" hidden="until-found">
+              <div class="tabpanel-inner" data-screen-title="Agents — Append-only guard and MCP audit log">
+                <div class="window-frame">
+                  <div class="window-bar">
+                    <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <span class="window-title">HQ — Agents · Activity</span>
+                    <button type="button" class="window-zoom-btn" data-open-lightbox>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+                        <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+                      </svg>
+                      Inspect
+                    </button>
+                  </div>
+                  <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size Agents Activity screenshot">
+                    <img class="shot-img theme-only-light" src="assets/screens/agents-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Agents Activity log in light mode showing claude-code hook stopping a wrong-account Cloudflare deploy, codex proposing a pending account link, and git hook passing a push">
+                    <img class="shot-img theme-only-dark" src="assets/screens/agents-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Agents Activity log in dark mode showing claude-code hook stopping a wrong-account Cloudflare deploy, codex proposing a pending account link, and git hook passing a push">
+                  </button>
+                </div>
+                <div class="shot-caption">
+                  <span><strong>Agents &amp; Activity:</strong> Append-only audit log of every MCP call, session brief, proposed registry edit, and push/deploy guard decision.</span>
+                  <span class="demo-note">Click image to enlarge.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 6: Disk Cleanup -->
+            <div role="tabpanel" aria-labelledby="tab-disk" hidden="until-found">
+              <div class="tabpanel-inner" data-screen-title="Disk — Rebuildable build folders and machine caches">
+                <div class="window-frame">
+                  <div class="window-bar">
+                    <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <span class="window-title">HQ — Disk · Rebuildable</span>
+                    <button type="button" class="window-zoom-btn" data-open-lightbox>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+                        <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+                      </svg>
+                      Inspect
+                    </button>
+                  </div>
+                  <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size Disk Cleanup screenshot">
+                    <img class="shot-img theme-only-light" src="assets/screens/disk-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Disk Rebuildable view in light mode listing Xcode DerivedData, Rust target folders, Next.js build output, and node_modules ready to move to Trash">
+                    <img class="shot-img theme-only-dark" src="assets/screens/disk-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Disk Rebuildable view in dark mode listing Xcode DerivedData, Rust target folders, Next.js build output, and node_modules ready to move to Trash">
+                  </button>
+                </div>
+                <div class="shot-caption">
+                  <span><strong>Disk Cleanup:</strong> Lists rebuildable build folders and machine caches; moves git-ignored folders to the Trash only after you confirm.</span>
+                  <span class="demo-note">Click image to enlarge.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What it checks -->
+    <section id="checks" class="section section-band">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What it checks</span>
+          <h2>Routine checks across repos, accounts, and agents</h2>
+          <p class="section-lead">
+            When you maintain multiple repositories, cloud logins, and AI coding tools on one Mac, small configuration mismatches are easy to miss. HQ checks the links between them in the background.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+            <h3>Wrong CLI accounts before a deploy</h3>
+            <p>
+              HQ reads project deploy configs — <code>wrangler.toml</code>, <code>firebase.json</code>, <code>supabase</code>, <code>fly.toml</code>, <code>netlify.toml</code>, <code>vercel.json</code>, and git remotes — and compares them against the accounts your CLIs are currently signed into before a push or deploy runs.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <h3>Secret filenames and commit emails</h3>
+            <p>
+              HQ checks your git index and commit history for secret filenames without opening their contents, and checks your configured and unpushed commit emails against the address you use for each repository owner.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2"/>
+                <rect x="9" y="9" width="6" height="6"/>
+                <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>
+              </svg>
+            </div>
+            <h3>Shared state for AI coding tools</h3>
+            <p>
+              Connect Claude Code, Codex, Cursor, Antigravity, and git in one step. Agents can read project briefs and run preflight checks through a local MCP server instead of rescanning disk, while account and renewal changes wait for your approval in HQ.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Bento -->
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Inside the app</span>
+          <h2>Six sections, derived from your files</h2>
+          <p class="section-lead">
+            HQ derives what it can from your project folders, lockfiles, git history, and installed CLIs. You only enter what cannot be derived: purpose, status, account ownership, plans, costs, and renewals.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <article class="card">
+            <span class="feature-tag">Today &amp; Inbox</span>
+            <h3>Prioritized alerts</h3>
+            <p>
+              Separates vulnerabilities in shipped runtime dependencies from dev-only tooling, flags repositories that exist only on this Mac, and puts the highest-priority items at the top with Copy Fix and Copy Task buttons.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="feature-tag">Projects &amp; Preflight</span>
+            <h3>Per-project status and guard</h3>
+            <p>
+              Shows branch state, unpushed commits, open GitHub PRs (including agent branches), live URLs, and a per-project push/deploy guard (<code>Stop</code>, <code>Warn</code>, or <code>Off</code>). Open any project in your editor or Terminal directly.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="feature-tag">Accounts &amp; Renewals</span>
+            <h3>CLI logins, domains, and certs</h3>
+            <p>
+              Reads active logins for 18+ platform CLIs (<code>gh</code>, <code>wrangler</code>, <code>supabase</code>, <code>firebase</code>, <code>vercel</code>, <code>aws</code>, <code>flyctl</code>, <code>netlify</code>, <code>gcloud</code>, <code>az</code>, and more), alongside subscription renewals, RDAP domain expiry, and TLS certificate dates.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="feature-tag">Vulnerability checks</span>
+            <h3>Lockfile advisories and EOL dates</h3>
+            <p>
+              Opt-in built-in OSV scanning checks 14 lockfile formats (npm, pnpm, yarn, Python, Rust, Go, Swift, Ruby, PHP, Dart) against <code>api.osv.dev</code> — or uses <code>osv-scanner</code> automatically when installed — alongside <code>endoflife.date</code> runtime checks.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="feature-tag">Disk</span>
+            <h3>Disk space map and cleanup</h3>
+            <p>
+              Maps folder sizes across your home folder and attached drives as a zoomable Voronoi map, lists rebuildable <code>node_modules</code>, <code>DerivedData</code>, <code>.next</code>, and <code>target</code> directories, and moves git-ignored build folders to Trash only when confirmed.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="feature-tag">Native Mac app</span>
+            <h3>Fast search and external drives</h3>
+            <p>
+              Built in Swift and SwiftUI. Use <code>Cmd-K</code> to jump to projects, accounts, live sites, or actions, refresh a single project on demand, and keep projects on external drives listed even while the drive is unplugged.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Bar Spotlight -->
+    <section class="section section-band">
+      <div class="container split-grid">
+        <div>
+          <span class="eyebrow">Menu bar &amp; lock</span>
+          <h2>Menu bar mode and window lock</h2>
+          <p class="section-lead">
+            If you prefer not to keep HQ in the Dock, switch to menu bar mode in Settings. Scheduled background refreshes continue running, notifications fire for new serious items, and the popover opens recent projects or priorities directly.
+          </p>
+          <ul class="check-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Menu bar at login:</strong> Can open in the menu bar only at login, showing an attention dot when serious alerts or pending agent changes need review.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Quick project actions:</strong> Open recent projects in Antigravity, Cursor, VS Code, Xcode, or Terminal, or run a single-project refresh from the popover.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Touch ID and Apple Watch lock:</strong> Lock HQ's windows on sleep, idle, or via <code>Ctrl-Cmd-L</code> while agents continue using <code>hq-mcp</code>.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="menubar-frame" data-screen-title="HQ Menu Bar Panel">
+          <button type="button" class="shot-trigger" style="width:auto" data-open-lightbox aria-label="Inspect full-size Menu Bar panel screenshot">
+            <img class="menubar-shot theme-only-light" src="assets/screens/menubar-light.png" width="720" height="1084" loading="lazy" alt="HQ macOS menu bar popover in light mode showing counts for alerts, agent changes, disk free, Do first priorities, and recent projects">
+            <img class="menubar-shot theme-only-dark" src="assets/screens/menubar-dark.png" width="720" height="1084" loading="lazy" alt="HQ macOS menu bar popover in dark mode showing counts for alerts, agent changes, disk free, Do first priorities, and recent projects">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Agents Section -->
+    <section id="agents" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">AI coding agents</span>
+          <h2>Local MCP server, push guards, and approval queue</h2>
+          <p class="section-lead">
+            HQ bundles a local stdio MCP server (<code>hq mcp</code> — no listening network sockets) and pre-command guard hooks. Manage setup and removal from <strong>Agents &gt; Connect</strong> or the Setup Guide; HQ keeps <code>.hq-backup</code> copies before editing hooks files.
+          </p>
+        </div>
+
+        <ul class="agent-pills" aria-label="Supported AI agent apps and git">
+          <li>Claude Code (MCP + Plugin Guard)</li>
+          <li>Codex (MCP + Hooks)</li>
+          <li>Cursor (MCP + Hooks)</li>
+          <li>Antigravity (MCP + Hooks)</li>
+          <li>Git 2.54+ (Global pre-push guard)</li>
+          <li>Claude Desktop &amp; VS Code (stdio MCP)</li>
+        </ul>
+
+        <div class="tier-grid">
+          <div class="tier-card">
+            <span class="tier-label ok">Applied immediately (revertible)</span>
+            <h3>What agents can do directly</h3>
+            <ul>
+              <li>Query project briefs, preflight verdicts, alerts, renewals, and CLI login mismatches without rescanning disk.</li>
+              <li>Use the <strong>Core (8 tools)</strong> profile to keep startup context small, or switch to <strong>All (28 tools)</strong> anytime.</li>
+              <li>Add dated project notes, update project status, and record optional cross-agent session handoff reports.</li>
+              <li>Every registry edit is a git commit with a <code>Via:</code> trailer that you can undo with <code>Cmd-Z</code>.</li>
+            </ul>
+          </div>
+
+          <div class="tier-card">
+            <span class="tier-label warn">Waits for approval</span>
+            <h3>What requires confirmation in HQ.app</h3>
+            <ul>
+              <li>Changes to linked accounts, live site URLs, domains, and subscription renewals wait in <strong>Agents &gt; Changes</strong> until you approve or reject them.</li>
+              <li>The <code>hq</code> CLI follows the same rules as MCP — an agent with shell access cannot self-approve changes or change guard modes.</li>
+              <li>Strings originating from repositories are marked as untrusted data to reduce prompt-injection risk.</li>
+              <li>Edits made directly in your registry folder outside HQ are detected and shown as a diff before being trusted.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy & Security -->
+    <section id="privacy" class="section section-band">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Privacy &amp; security</span>
+          <h2>What HQ reads, and what it never does</h2>
+          <p class="section-lead">
+            HQ runs locally on your Mac with explicit limits on what files it reads, how it runs git, and which hosts it contacts.
+          </p>
+        </div>
+
+        <div class="trust-grid">
+          <article class="trust-item">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <h3>No secrets</h3>
+              <p>
+                <code>.env</code>, key, token, and credential files are recorded by name and never opened. Passwords stay in Apple Passwords; HQ stores only the entry's name and redacts token-shaped strings before writing to disk or returning MCP results.
+              </p>
+            </div>
+          </article>
+
+          <article class="trust-item">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Read-only on scanned repositories</h3>
+              <p>
+                HQ never moves, renames, or deletes files in your projects (except moving a git-ignored build folder to the Trash after you confirm). Git runs with hooks, fsmonitor, custom filters, and lazy fetches disabled, and evicted iCloud files are skipped.
+              </p>
+            </div>
+          </article>
+
+          <article class="trust-item">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <div>
+              <h3>No telemetry and visible network log</h3>
+              <p>
+                No HQ account, no analytics, and no listening sockets. Every outbound request — GitHub via your own <code>gh</code> login, opt-in <code>api.osv.dev</code>, <code>endoflife.date</code>, RDAP/TLS checks, installed CLIs, and Sparkle updates — is listed in <strong>Settings &gt; Network</strong>.
+              </p>
+            </div>
+          </article>
+
+          <article class="trust-item">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Plain local YAML and SQLite</h3>
+              <p>
+                Your projects and accounts are stored as plain YAML files in your own local git repository (<code>~/HQ</code> by default). Generated scan state and the append-only audit log stay in a private <code>0700</code> SQLite database in your user Library.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5-Step Setup Guide -->
+    <section id="setup" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">First run</span>
+          <h2>5-step Setup Guide</h2>
+          <p class="section-lead">
+            Opening HQ starts a guided setup that resumes where you left off if closed, and can be reopened anytime from <strong>Help &gt; Setup Guide</strong>. Nothing outside HQ changes until you confirm.
+          </p>
+        </div>
+
+        <ol class="steps-list">
+          <li class="step-card">
+            <span class="step-num">1</span>
+            <h3>Folders &amp; privacy</h3>
+            <p>Choose your registry folder (<code>~/HQ</code> by default), scan roots, and opt-in GitHub PR and built-in OSV vulnerability switches.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num">2</span>
+            <h3>Scan &amp; projects</h3>
+            <p>Watch the first scan step by step, then pick which discovered projects to track in your registry.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num">3</span>
+            <h3>Tools &amp; logins</h3>
+            <p>Optional checks for Command Line Tools, <code>gh</code>, macOS folder permissions, platform CLI logins, and git 2.54+ for the global pre-push guard.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num">4</span>
+            <h3>Connect agents</h3>
+            <p>Optional setup for Claude Code, Codex, Cursor, Antigravity, and git — choose Core (8) or All (28) MCP tools, guard hooks, and session handoffs.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num">5</span>
+            <h3>Finish</h3>
+            <p>Optionally turn on open-at-login and background refresh, and see your first <strong>Do First</strong> item with Copy Fix or Copy Task.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Install & Latest Release -->
+    <section id="install" class="section section-band">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Download</span>
+          <h2>Download and install</h2>
+          <p class="section-lead">
+            Requires a Mac with Apple silicon (M1 or later) and macOS 15 or later. Signed with a Developer ID and notarized by Apple.
+          </p>
+        </div>
+
+        <div class="install-layout">
+          <div class="install-box">
+            <h3>Install</h3>
+            <ol class="install-steps">
+              <li><strong>Download</strong> the latest <code data-release-title>HQ 0.14.1</code> zip archive below.</li>
+              <li><strong>Open the zip</strong> to unpack <code>HQ.app</code> and move it to your <strong>Applications</strong> folder.</li>
+              <li><strong>Open HQ</strong> and walk through the 5-step Setup Guide.</li>
+            </ol>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
+              <a class="btn btn-primary btn-lg" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.14.1/HQ-0.14.1.zip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download <span data-release-title>HQ 0.14.1</span> (.zip)
+              </a>
+              <a class="btn btn-secondary btn-lg" href="https://github.com/futogabor/hq-releases/releases/latest">View on GitHub</a>
+            </div>
+            <p style="font-size:13.5px; color:var(--ink-tertiary); margin:0;">
+              HQ updates itself via Sparkle (EdDSA-verified). On the second launch it asks whether to check automatically; you can also check anytime from <strong>HQ &gt; Check for Updates</strong>.
+            </p>
+          </div>
+
+          <div class="release-notes-box">
+            <div class="release-notes-head">
+              <h3>Latest release: <span data-release-title>HQ 0.14.1</span></h3>
+              <span id="release-notes-meta" class="release-notes-meta">Nov 27, 2026 · 19.7 MB · macOS 15+</span>
+            </div>
+            <div id="release-notes-body" class="release-notes-body">
+              <h3>Changed</h3>
+              <ul>
+                <li>Use one set of repository instructions across agents and describe MCP profiles by what they do.</li>
+                <li>The Setup Guide explains which GitHub checks its toggle controls, and VoiceOver announces the current step.</li>
+              </ul>
+              <h3>Fixed</h3>
+              <ul>
+                <li>Git-ignored build and backup folders no longer create phantom deploy targets, packages, or workflows in project scans.</li>
+                <li>Today's Only on this Mac count matches the Projects filter it opens, and the CLI logins card includes signed-out tools under the correct label.</li>
+                <li>Preflight shows when a project has missing account links or unavailable CLI logins.</li>
+                <li>Built-in OSV checks follow paginated results and retain earlier findings when a check is incomplete.</li>
+                <li>Agent setup shows which installed Git can run the push guard when another copy is too old.</li>
+              </ul>
+              <h3>Security</h3>
+              <ul>
+                <li>The push guard checks the active checkout's Git index for tracked secret filenames before deciding, including in linked worktrees.</li>
+              </ul>
+            </div>
+            <div class="release-notes-foot">
+              <a href="https://github.com/futogabor/hq-releases/releases">Full release history</a>
+              <a href="https://github.com/futogabor/hq-releases/issues">Report a bug or request a feature</a>
+              <a href="appcast.xml">Sparkle appcast.xml</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="faq-accordion" id="faq-accordion" aria-labelledby="faq-heading">
+          <div class="faq-header-row">
+            <div class="section-head">
+              <span class="eyebrow">Questions</span>
+              <h2 id="faq-heading">Frequently asked questions</h2>
+            </div>
+            <button type="button" class="btn btn-ghost" commandfor="faq-accordion" command="--toggle-all" aria-expanded="false">
+              <span class="expand">Expand all</span>
+              <span class="collapse">Collapse all</span>
+            </button>
+          </div>
+
+          <details>
+            <summary>Why is the GitHub repository called hq-releases?</summary>
+            <div class="faq-answer">
+              <p>
+                <code>futogabor/hq-releases</code> is the public distribution repository for HQ. It holds the signed and notarized app zips under GitHub Releases, the EdDSA-signed Sparkle update feed (<code>appcast.xml</code>), issue tracking, and this page.
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Does HQ contain AI or spend AI tokens in the background?</summary>
+            <div class="faq-answer">
+              <p>
+                No. HQ has no AI model inside and spends no AI tokens on scans, login checks, vulnerability lookups, or push guards. It runs those checks locally on your Mac and exposes structured answers to the AI coding agents you already use.
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Does HQ work with projects created in cloud tools like Lovable, Bolt, or v0?</summary>
+            <div class="faq-answer">
+              <p>
+                Yes. Once a cloud-built project is cloned locally or added to your registry with its GitHub repository, HQ tracks its open pull requests, agent branches, CI checks, domains, and deployments alongside your local repositories.
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Will HQ modify my agent configs or project files without asking?</summary>
+            <div class="faq-answer">
+              <p>
+                No. HQ is read-only on scanned project folders (except moving a git-ignored build folder to Trash when you confirm). Agent MCP servers and guard hooks are only changed when you click <strong>Set Up</strong> in the app, and HQ creates a <code>.hq-backup</code> copy of edited hooks files.
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>How do I uninstall HQ or disconnect my AI agents?</summary>
+            <div class="faq-answer">
+              <p>
+                Open <strong>Agents &gt; Connect</strong> inside HQ and click <strong>Remove HQ from Agents</strong> to remove HQ's MCP entries and guard hooks. Then quit HQ and drag <code>HQ.app</code> from Applications to the Trash. Your YAML registry in <code>~/HQ</code> remains untouched.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="brand">
+        <img class="brand-icon theme-only-light" src="assets/icon-light.png" width="24" height="24" alt="" loading="lazy">
+        <img class="brand-icon theme-only-dark" src="assets/icon-dark.png" width="24" height="24" alt="" loading="lazy">
+        <span><strong style="color:var(--ink);">HQ (Helios Query)</strong> · macOS 15+ (Apple Silicon)</span>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer">
+        <a data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.14.1/HQ-0.14.1.zip">Download latest</a>
+        <a href="https://github.com/futogabor/hq-releases/releases">Releases</a>
+        <a href="https://github.com/futogabor/hq-releases/issues">Feedback &amp; Issues</a>
+        <a href="https://github.com/futogabor/hq-releases">GitHub</a>
+        <a href="appcast.xml">Appcast</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Full-size Screenshot Lightbox Dialog -->
+  <dialog id="lightbox" class="lightbox" closedby="any" aria-labelledby="lightbox-title">
+    <div class="lightbox-head">
+      <h2 id="lightbox-title">HQ Screenshot</h2>
+      <button id="lightbox-close" class="lightbox-close" type="button">Close</button>
+    </div>
+    <div class="lightbox-body">
+      <img id="lightbox-img" src="" alt="">
+    </div>
+  </dialog>
+</body>
+</html>

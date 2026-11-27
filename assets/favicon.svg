@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="180 180 664 664">
+  <style>
+    .mark { fill: #1d1a16; }
+    .core { fill: #d4891e; }
+    @media (prefers-color-scheme: dark) {
+      .mark { fill: #ede6d6; }
+      .core { fill: #f4be58; }
+    }
+  </style>
+  <path class="mark" d="M 584.469 782.459 A 280 280 0 1 1 782.459 584.469 A 38 38 0 0 1 709.049 564.799 A 204 204 0 1 0 564.799 709.049 A 38 38 0 0 1 584.469 782.459 Z"/>
+  <path class="mark" d="M 651.300 697.969 L 712.111 758.780 A 33 33 0 0 0 758.780 712.111 L 697.969 651.300 A 33 33 0 0 0 651.300 697.969 Z"/>
+  <circle class="core" cx="512" cy="512" r="96"/>
+</svg>
