@@ -162,6 +162,11 @@
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxTitle = document.getElementById('lightbox-title');
   const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  const galleryHosts = Array.from(document.querySelectorAll('.tabpanels [data-screen-title]'));
+  let activeGalleryIndex = -1;
 
   let supportsDisplayTransition;
   function canTransitionDisplay() {
@@ -200,15 +205,45 @@
     dialog.close();
   }
 
-  function openLightbox(panelEl) {
-    if (!lightbox || !lightboxImg || !lightboxTitle || !panelEl) return;
+  function renderLightboxHost(host) {
+    if (!lightboxImg || !lightboxTitle || !host) return;
     const isDark = currentRenderedScheme() === 'dark';
-    const img = panelEl.querySelector(isDark ? '.theme-only-dark' : '.theme-only-light') || panelEl.querySelector('img');
+    const pic = host.querySelector(isDark ? 'picture.theme-only-dark' : 'picture.theme-only-light');
+    const source = pic?.querySelector('source[type="image/webp"]');
+    const img =
+      pic?.querySelector('img') ||
+      host.querySelector(isDark ? 'img.theme-only-dark' : 'img.theme-only-light') ||
+      host.querySelector('img');
     if (!img) return;
-    lightbox.removeAttribute('data-closing');
-    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.src = img.currentSrc || source?.srcset || img.src;
     lightboxImg.alt = img.alt;
-    lightboxTitle.textContent = panelEl.dataset.screenTitle || img.alt || 'HQ screenshot';
+    lightboxTitle.textContent = host.dataset.screenTitle || img.alt || 'HQ screenshot';
+
+    const inGallery = activeGalleryIndex >= 0;
+    if (lightboxPrev) lightboxPrev.hidden = !inGallery;
+    if (lightboxNext) lightboxNext.hidden = !inGallery;
+    if (lightboxCounter) {
+      lightboxCounter.hidden = !inGallery;
+      if (inGallery) lightboxCounter.textContent = `${activeGalleryIndex + 1} / ${galleryHosts.length}`;
+    }
+  }
+
+  function stepLightbox(delta) {
+    if (activeGalleryIndex < 0 || galleryHosts.length === 0) return;
+    activeGalleryIndex = (activeGalleryIndex + delta + galleryHosts.length) % galleryHosts.length;
+    const host = galleryHosts[activeGalleryIndex];
+    const panel = host.closest('[role="tabpanel"]');
+    const tabId = panel?.getAttribute('aria-labelledby');
+    const tab = tabId ? document.getElementById(tabId) : null;
+    if (tab) selectTab(tab);
+    renderLightboxHost(host);
+  }
+
+  function openLightbox(panelEl) {
+    if (!lightbox || !panelEl) return;
+    activeGalleryIndex = galleryHosts.indexOf(panelEl);
+    lightbox.removeAttribute('data-closing');
+    renderLightboxHost(panelEl);
     lightbox.showModal();
   }
 
@@ -220,7 +255,20 @@
       });
     });
 
+    lightboxPrev?.addEventListener('click', () => stepLightbox(-1));
+    lightboxNext?.addEventListener('click', () => stepLightbox(1));
     lightboxClose?.addEventListener('click', () => closeTopLayer(lightbox));
+
+    lightbox.addEventListener('keydown', (event) => {
+      if (!lightbox.open || activeGalleryIndex < 0) return;
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        stepLightbox(-1);
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        stepLightbox(1);
+      }
+    });
 
     // Route Esc and native closedby cancel requests through closeTopLayer for smooth exit
     lightbox.addEventListener('cancel', (event) => {

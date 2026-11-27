@@ -526,7 +526,7 @@ code {
 
 /* Hero */
 .hero {
-  padding: 58px 0 36px;
+  padding: 28px 0 32px;
   text-align: center;
 }
 
@@ -534,7 +534,7 @@ code {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
+  padding: 5px 13px 5px 7px;
   border-radius: var(--radius-pill);
   background: var(--surface);
   border: 1px solid var(--border);
@@ -542,46 +542,32 @@ code {
   font-size: 13px;
   font-weight: 500;
   box-shadow: var(--shadow-sm);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
-.hero-badge-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.hero-icon-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.hero-app-icon {
-  width: 84px;
-  height: 84px;
-  border-radius: 20px;
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.16));
+.hero-badge-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
 }
 
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.15rem, 4.6vw, 3.5rem);
+  font-size: clamp(1.9rem, 3.6vw, 2.75rem);
   font-weight: 700;
-  line-height: 1.09;
-  letter-spacing: -0.035em;
-  max-width: 19ch;
-  margin: 0 auto 18px;
+  line-height: 1.11;
+  letter-spacing: -0.032em;
+  max-width: 24ch;
+  margin: 0 auto 14px;
   text-wrap: balance;
 }
 
 .hero-lead {
-  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
-  line-height: 1.6;
+  font-size: clamp(1rem, 1.45vw, 1.1rem);
+  line-height: 1.56;
   color: var(--ink-secondary);
-  max-width: 64ch;
-  margin: 0 auto 28px;
+  max-width: 66ch;
+  margin: 0 auto 20px;
   text-wrap: pretty;
 }
 
@@ -589,18 +575,18 @@ code {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px 20px;
+  gap: 6px 18px;
   font-size: 13px;
   color: var(--ink-tertiary);
-  margin: 0 0 42px;
+  margin: 0 0 24px;
   padding: 0;
   list-style: none;
 }
@@ -1090,6 +1076,55 @@ code {
   gap: 6px;
 }
 
+/* Guard-in-action terminal example */
+.guard-terminal {
+  margin-top: 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(245, 240, 228, 0.14);
+  background: #12151d;
+  color: #e9e6de;
+  color-scheme: dark;
+  accent-color: var(--accent);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.guard-terminal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 14px;
+  background: #1a1e29;
+  border-bottom: 1px solid rgba(245, 240, 228, 0.09);
+  font-size: 12.5px;
+  color: #a6aab8;
+}
+
+.guard-terminal-badge {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.14);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.guard-terminal pre {
+  margin: 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.guard-terminal .t-prompt { color: #7d8394; }
+.guard-terminal .t-cmd { color: #f4f1ea; font-weight: 600; }
+.guard-terminal .t-stop { color: #fca5a5; }
+.guard-terminal .t-fix { color: #f0b650; }
+.guard-terminal .t-dim { color: #8c93a6; }
+
 /* Security / Trust matrix */
 .trust-grid {
   display: grid;
@@ -1440,7 +1475,7 @@ dialog.lightbox::backdrop {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 10px 14px;
   background: var(--chrome-bar);
   border-bottom: 1px solid var(--border);
 }
@@ -1449,14 +1484,34 @@ dialog.lightbox::backdrop {
   font-size: 14px;
   font-weight: 600;
   margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
+.lightbox-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.lightbox-counter {
+  font-size: 12.5px;
+  color: var(--ink-tertiary);
+  font-variant-numeric: tabular-nums;
+  margin-inline: 4px;
+}
+
+.lightbox-nav,
 .lightbox-close {
   appearance: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 6px 11px;
   font-family: inherit;
   font-size: 13px;
   font-weight: 550;
@@ -1467,8 +1522,14 @@ dialog.lightbox::backdrop {
   cursor: pointer;
 }
 
+.lightbox-nav:hover,
 .lightbox-close:hover {
   background: var(--bg-subtle);
+}
+
+.lightbox-nav svg {
+  width: 14px;
+  height: 14px;
 }
 
 .lightbox-body {

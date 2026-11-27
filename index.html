@@ -20,6 +20,7 @@
   <meta property="og:image" content="https://futogabor.github.io/hq-releases/assets/screens/today-light.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" href="assets/icon-light.png">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
@@ -78,13 +79,9 @@
     <!-- Hero -->
     <section id="top" class="hero">
       <div class="container">
-        <div class="hero-icon-wrap">
-          <img class="hero-app-icon theme-only-light" src="assets/icon-light.png" srcset="assets/icon-light.png 1x, assets/icon-light@2x.png 2x" width="84" height="84" alt="HQ (Helios Query) Mac app icon">
-          <img class="hero-app-icon theme-only-dark" src="assets/icon-dark.png" srcset="assets/icon-dark.png 1x, assets/icon-dark@2x.png 2x" width="84" height="84" alt="HQ (Helios Query) Mac app icon">
-        </div>
-
         <div class="hero-badge">
-          <span class="hero-badge-dot" aria-hidden="true"></span>
+          <img class="hero-badge-icon theme-only-light" src="assets/icon-light.png" width="20" height="20" alt="">
+          <img class="hero-badge-icon theme-only-dark" src="assets/icon-dark.png" width="20" height="20" alt="">
           <span id="hero-release-badge">v0.14.1 · macOS 15+ · Apple Silicon · 19.7 MB</span>
         </div>
 
@@ -104,7 +101,6 @@
             Download HQ <span data-release-version>v0.14.1</span>
           </a>
           <a class="btn btn-secondary btn-lg" href="#install">Install &amp; Release Notes</a>
-          <a class="btn btn-secondary btn-lg" href="https://github.com/futogabor/hq-releases/releases">All Releases</a>
         </div>
 
         <ul class="hero-meta" aria-label="Key facts">
@@ -156,8 +152,14 @@
                     </button>
                   </div>
                   <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size Today screenshot">
-                    <img class="shot-img theme-only-light" src="assets/screens/today-light.png" width="1920" height="1200" fetchpriority="high" alt="HQ Today view in light mode showing project counts, serious alerts, local-only repos, monthly spend, disk free, active CLI logins, and prioritized items">
-                    <img class="shot-img theme-only-dark" src="assets/screens/today-dark.png" width="1920" height="1200" fetchpriority="high" alt="HQ Today view in dark mode showing project counts, serious alerts, local-only repos, monthly spend, disk free, active CLI logins, and prioritized items">
+                    <picture class="theme-only-light">
+                      <source srcset="assets/screens/today-light.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/today-light.png" width="1920" height="1200" fetchpriority="high" alt="HQ Today view in light mode showing project counts, serious alerts, local-only repos, monthly spend, disk free, active CLI logins, and prioritized items">
+                    </picture>
+                    <picture class="theme-only-dark">
+                      <source srcset="assets/screens/today-dark.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/today-dark.png" width="1920" height="1200" fetchpriority="high" alt="HQ Today view in dark mode showing project counts, serious alerts, local-only repos, monthly spend, disk free, active CLI logins, and prioritized items">
+                    </picture>
                   </button>
                 </div>
                 <div class="shot-caption">
@@ -183,8 +185,14 @@
                     </button>
                   </div>
                   <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size Preflight screenshot">
-                    <img class="shot-img theme-only-light" src="assets/screens/preflight-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Project page in light mode blocking a Cloudflare deploy because wrangler is logged into a personal account instead of the client organization">
-                    <img class="shot-img theme-only-dark" src="assets/screens/preflight-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Project page in dark mode blocking a Cloudflare deploy because wrangler is logged into a personal account instead of the client organization">
+                    <picture class="theme-only-light">
+                      <source srcset="assets/screens/preflight-light.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/preflight-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Project page in light mode blocking a Cloudflare deploy because wrangler is logged into a personal account instead of the client organization">
+                    </picture>
+                    <picture class="theme-only-dark">
+                      <source srcset="assets/screens/preflight-dark.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/preflight-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Project page in dark mode blocking a Cloudflare deploy because wrangler is logged into a personal account instead of the client organization">
+                    </picture>
                   </button>
                 </div>
                 <div class="shot-caption">
@@ -210,8 +218,14 @@
                     </button>
                   </div>
                   <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size Inbox screenshot">
-                    <img class="shot-img theme-only-light" src="assets/screens/inbox-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Inbox in light mode listing expiring domains, deleted secret files still in git history, local-only repositories, wrong CLI logins, and high vulnerabilities">
-                    <img class="shot-img theme-only-dark" src="assets/screens/inbox-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Inbox in dark mode listing expiring domains, deleted secret files still in git history, local-only repositories, wrong CLI logins, and high vulnerabilities">
+                    <picture class="theme-only-light">
+                      <source srcset="assets/screens/inbox-light.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/inbox-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Inbox in light mode listing expiring domains, deleted secret files still in git history, local-only repositories, wrong CLI logins, and high vulnerabilities">
+                    </picture>
+                    <picture class="theme-only-dark">
+                      <source srcset="assets/screens/inbox-dark.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/inbox-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Inbox in dark mode listing expiring domains, deleted secret files still in git history, local-only repositories, wrong CLI logins, and high vulnerabilities">
+                    </picture>
                   </button>
                 </div>
                 <div class="shot-caption">
@@ -237,8 +251,14 @@
                     </button>
                   </div>
                   <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size CLI Logins screenshot">
-                    <img class="shot-img theme-only-light" src="assets/screens/logins-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Accounts CLI Logins tab in light mode showing active sessions for wrangler, flyctl, gh, netlify, supabase, and signed-out vercel">
-                    <img class="shot-img theme-only-dark" src="assets/screens/logins-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Accounts CLI Logins tab in dark mode showing active sessions for wrangler, flyctl, gh, netlify, supabase, and signed-out vercel">
+                    <picture class="theme-only-light">
+                      <source srcset="assets/screens/logins-light.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/logins-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Accounts CLI Logins tab in light mode showing active sessions for wrangler, flyctl, gh, netlify, supabase, and signed-out vercel">
+                    </picture>
+                    <picture class="theme-only-dark">
+                      <source srcset="assets/screens/logins-dark.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/logins-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Accounts CLI Logins tab in dark mode showing active sessions for wrangler, flyctl, gh, netlify, supabase, and signed-out vercel">
+                    </picture>
                   </button>
                 </div>
                 <div class="shot-caption">
@@ -264,8 +284,14 @@
                     </button>
                   </div>
                   <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size Agents Activity screenshot">
-                    <img class="shot-img theme-only-light" src="assets/screens/agents-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Agents Activity log in light mode showing claude-code hook stopping a wrong-account Cloudflare deploy, codex proposing a pending account link, and git hook passing a push">
-                    <img class="shot-img theme-only-dark" src="assets/screens/agents-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Agents Activity log in dark mode showing claude-code hook stopping a wrong-account Cloudflare deploy, codex proposing a pending account link, and git hook passing a push">
+                    <picture class="theme-only-light">
+                      <source srcset="assets/screens/agents-light.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/agents-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Agents Activity log in light mode showing claude-code hook stopping a wrong-account Cloudflare deploy, codex proposing a pending account link, and git hook passing a push">
+                    </picture>
+                    <picture class="theme-only-dark">
+                      <source srcset="assets/screens/agents-dark.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/agents-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Agents Activity log in dark mode showing claude-code hook stopping a wrong-account Cloudflare deploy, codex proposing a pending account link, and git hook passing a push">
+                    </picture>
                   </button>
                 </div>
                 <div class="shot-caption">
@@ -291,12 +317,18 @@
                     </button>
                   </div>
                   <button type="button" class="shot-trigger" data-open-lightbox aria-label="Inspect full-size Disk Cleanup screenshot">
-                    <img class="shot-img theme-only-light" src="assets/screens/disk-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Disk Rebuildable view in light mode listing Xcode DerivedData, Rust target folders, Next.js build output, and node_modules ready to move to Trash">
-                    <img class="shot-img theme-only-dark" src="assets/screens/disk-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Disk Rebuildable view in dark mode listing Xcode DerivedData, Rust target folders, Next.js build output, and node_modules ready to move to Trash">
+                    <picture class="theme-only-light">
+                      <source srcset="assets/screens/disk-light.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/disk-light.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Disk Rebuildable view in light mode listing Xcode DerivedData, Rust target folders, Next.js build output, and node_modules ready to move to Trash">
+                    </picture>
+                    <picture class="theme-only-dark">
+                      <source srcset="assets/screens/disk-dark.webp" type="image/webp">
+                      <img class="shot-img" src="assets/screens/disk-dark.png" width="1920" height="1200" fetchpriority="low" loading="lazy" alt="HQ Disk Rebuildable view in dark mode listing Xcode DerivedData, Rust target folders, Next.js build output, and node_modules ready to move to Trash">
+                    </picture>
                   </button>
                 </div>
                 <div class="shot-caption">
-                  <span><strong>Disk Cleanup:</strong> Lists rebuildable build folders and machine caches; moves git-ignored folders to the Trash only after you confirm.</span>
+                  <span><strong>Disk Cleanup:</strong> Lists rebuildable build folders and machine caches alongside a folder size map; moves git-ignored folders to the Trash only after you confirm.</span>
                   <span class="demo-note">Click image to enlarge.</span>
                 </div>
               </div>
@@ -407,9 +439,9 @@
 
           <article class="card">
             <span class="feature-tag">Disk</span>
-            <h3>Disk space map and cleanup</h3>
+            <h3>Disk map and rebuildable folders</h3>
             <p>
-              Maps folder sizes across your home folder and attached drives as a zoomable Voronoi map, lists rebuildable <code>node_modules</code>, <code>DerivedData</code>, <code>.next</code>, and <code>target</code> directories, and moves git-ignored build folders to Trash only when confirmed.
+              Maps folder sizes across your home folder and attached drives, lists rebuildable <code>node_modules</code>, <code>DerivedData</code>, <code>.next</code>, and <code>target</code> directories, and moves git-ignored build folders to Trash only when confirmed.
             </p>
           </article>
 
@@ -451,8 +483,14 @@
 
         <div class="menubar-frame" data-screen-title="HQ Menu Bar Panel">
           <button type="button" class="shot-trigger" style="width:auto" data-open-lightbox aria-label="Inspect full-size Menu Bar panel screenshot">
-            <img class="menubar-shot theme-only-light" src="assets/screens/menubar-light.png" width="720" height="1084" loading="lazy" alt="HQ macOS menu bar popover in light mode showing counts for alerts, agent changes, disk free, Do first priorities, and recent projects">
-            <img class="menubar-shot theme-only-dark" src="assets/screens/menubar-dark.png" width="720" height="1084" loading="lazy" alt="HQ macOS menu bar popover in dark mode showing counts for alerts, agent changes, disk free, Do first priorities, and recent projects">
+            <picture class="theme-only-light">
+              <source srcset="assets/screens/menubar-light.webp" type="image/webp">
+              <img class="menubar-shot" src="assets/screens/menubar-light.png" width="720" height="1084" loading="lazy" alt="HQ macOS menu bar popover in light mode showing counts for alerts, agent changes, disk free, Do first priorities, and recent projects">
+            </picture>
+            <picture class="theme-only-dark">
+              <source srcset="assets/screens/menubar-dark.webp" type="image/webp">
+              <img class="menubar-shot" src="assets/screens/menubar-dark.png" width="720" height="1084" loading="lazy" alt="HQ macOS menu bar popover in dark mode showing counts for alerts, agent changes, disk free, Do first priorities, and recent projects">
+            </picture>
           </button>
         </div>
       </div>
@@ -500,6 +538,18 @@
               <li>Edits made directly in your registry folder outside HQ are detected and shown as a diff before being trusted.</li>
             </ul>
           </div>
+        </div>
+
+        <div class="guard-terminal" aria-label="Example of HQ push and deploy guard stopping a wrong-account deploy">
+          <div class="guard-terminal-head">
+            <span>Example: pre-command guard output (<code>hq guard --for claude-code</code>)</span>
+            <span class="guard-terminal-badge">stopped</span>
+          </div>
+          <pre><code><span class="t-prompt">$</span> <span class="t-cmd">npx wrangler deploy</span>
+<span class="t-stop">HQ stopped this wrangler deploy in meridian-store. Its push check found:</span>
+- Wrong Cloudflare account: wrangler is logged into alex@northstar.example, not the Cloudflare account Worker meridian-store uses (ops@meridianstudio.example).
+  <span class="t-fix">Fix: wrangler logout, then wrangler login</span>
+<span class="t-dim">Logins were checked 2026-11-27T14:15:00Z. The repository was read just now.</span></code></pre>
         </div>
       </div>
     </section>
@@ -779,7 +829,16 @@
   <dialog id="lightbox" class="lightbox" closedby="any" aria-labelledby="lightbox-title">
     <div class="lightbox-head">
       <h2 id="lightbox-title">HQ Screenshot</h2>
-      <button id="lightbox-close" class="lightbox-close" type="button">Close</button>
+      <div class="lightbox-controls">
+        <button id="lightbox-prev" class="lightbox-nav" type="button" aria-label="Previous screenshot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <span id="lightbox-counter" class="lightbox-counter" aria-live="polite">1 / 6</span>
+        <button id="lightbox-next" class="lightbox-nav" type="button" aria-label="Next screenshot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <button id="lightbox-close" class="lightbox-close" type="button">Close</button>
+      </div>
     </div>
     <div class="lightbox-body">
       <img id="lightbox-img" src="" alt="">
