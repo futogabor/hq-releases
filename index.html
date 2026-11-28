@@ -63,7 +63,7 @@
           </span>
         </button>
 
-        <a class="btn btn-primary" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.16.0/HQ-0.16.0.zip">
+        <a class="btn btn-primary" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.17.0/HQ-0.17.0.zip">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
@@ -82,7 +82,7 @@
         <div class="hero-badge">
           <img class="hero-badge-icon theme-only-light" src="assets/icon-light.png" width="20" height="20" alt="">
           <img class="hero-badge-icon theme-only-dark" src="assets/icon-dark.png" width="20" height="20" alt="">
-          <span id="hero-release-badge">v0.16.0 · macOS 15+ · Apple Silicon · 20.7 MB</span>
+          <span id="hero-release-badge">v0.17.0 · macOS 15+ · Apple Silicon · 21.2 MB</span>
         </div>
 
         <h1>Track the software projects, accounts, and AI agents on your Mac.</h1>
@@ -92,13 +92,13 @@
         </p>
 
         <div class="hero-cta">
-          <a class="btn btn-primary btn-lg" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.16.0/HQ-0.16.0.zip">
+          <a class="btn btn-primary btn-lg" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.17.0/HQ-0.17.0.zip">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
               <polyline points="7 10 12 15 17 10"/>
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
-            Download HQ <span data-release-version>v0.16.0</span>
+            Download HQ <span data-release-version>v0.17.0</span>
           </a>
           <a class="btn btn-secondary btn-lg" href="#install">Install &amp; Release Notes</a>
         </div>
@@ -196,7 +196,7 @@
                   </button>
                 </div>
                 <div class="shot-caption">
-                  <span><strong>Before you push or deploy:</strong> Flags mismatches between project deploy configs and active CLI logins for Cloudflare, Netlify, Vercel, Firebase, Supabase, Fly.io, and GitHub.</span>
+                  <span><strong>Before you push or deploy:</strong> Flags mismatches between project deploy configs and active CLI logins for Cloudflare, Netlify, Vercel, Firebase, Supabase, Google Cloud, AWS, Fly.io, DigitalOcean, and GitHub.</span>
                   <span class="demo-note">Click image to enlarge.</span>
                 </div>
               </div>
@@ -328,7 +328,7 @@
                   </button>
                 </div>
                 <div class="shot-caption">
-                  <span><strong>Disk Cleanup:</strong> Lists rebuildable build folders and machine caches alongside a folder size map; moves git-ignored folders to the Trash only after you confirm.</span>
+                  <span><strong>Disk Cleanup:</strong> Lists rebuildable build folders and machine caches alongside a folder size map; moves git-ignored folders to the Trash only after you confirm and never if they contain git worktrees.</span>
                   <span class="demo-note">Click image to enlarge.</span>
                 </div>
               </div>
@@ -359,7 +359,7 @@
             </div>
             <h3>Wrong CLI accounts before a deploy</h3>
             <p>
-              HQ reads project deploy configs — <code>wrangler.toml</code>, <code>firebase.json</code>, <code>supabase</code>, <code>fly.toml</code>, <code>netlify.toml</code>, <code>vercel.json</code>, and git remotes — and compares them against the accounts your CLIs are currently signed into before a push or deploy runs.
+              HQ reads project deploy configs — <code>wrangler.toml</code>, <code>firebase.json</code>, <code>supabase</code>, <code>vercel.json</code>, <code>gcloud</code>, AWS profiles, <code>fly.toml</code>, <code>netlify.toml</code>, <code>doctl</code>, and git remotes — remembers which account owns each project across CLI switches, and compares them against your active sessions before a push or deploy runs.
             </p>
           </article>
 
@@ -407,9 +407,9 @@
         <div class="features-grid">
           <article class="card">
             <span class="feature-tag">Today &amp; Inbox</span>
-            <h3>Prioritized alerts</h3>
+            <h3>Prioritized alerts and daily triage</h3>
             <p>
-              Separates vulnerabilities in shipped runtime dependencies from dev-only tooling, flags repositories that exist only on this Mac, and puts the highest-priority items at the top with Copy Fix and Copy Task buttons.
+              Separates vulnerabilities in shipped runtime dependencies (with CVE summaries and major-upgrade flags) from dev tooling, collapses multi-account CLI mismatches into one provider row with switch/isolation recipes, and offers single-call <code>hq today</code> / MCP <code>triage</code> briefings alongside Copy Fix and Copy Task buttons.
             </p>
           </article>
 
@@ -417,15 +417,15 @@
             <span class="feature-tag">Projects &amp; Preflight</span>
             <h3>Per-project status and guard</h3>
             <p>
-              Shows branch state, unpushed commits, open GitHub PRs (including agent branches), live URLs, and a per-project push/deploy guard (<code>Stop</code>, <code>Warn</code>, or <code>Off</code>). Open any project in your editor or Terminal directly.
+              Shows branch state, unpushed commits, staged/changed file samples, open GitHub PRs (including agent branches), live URLs, and a per-project push/deploy guard (<code>Stop</code>, <code>Warn</code>, or <code>Off</code>). Open any project in your editor or Terminal directly.
             </p>
           </article>
 
           <article class="card">
             <span class="feature-tag">Accounts &amp; Renewals</span>
-            <h3>CLI logins, domains, and certs</h3>
+            <h3>Multi-account CLI logins, domains, and certs</h3>
             <p>
-              Reads active logins for 18+ platform CLIs (<code>gh</code>, <code>wrangler</code>, <code>supabase</code>, <code>firebase</code>, <code>vercel</code>, <code>aws</code>, <code>flyctl</code>, <code>netlify</code>, <code>gcloud</code>, <code>az</code>, and more), alongside subscription renewals, RDAP domain expiry, and TLS certificate dates.
+              Reads active logins across 18+ platform CLIs (<code>gh</code>, <code>wrangler</code>, <code>supabase</code>, <code>firebase</code>, <code>vercel</code>, <code>aws</code>, <code>gcloud</code>, <code>flyctl</code>, <code>netlify</code>, <code>doctl</code>, <code>az</code>, and more), remembers project ownership across account switches without storing credentials, and tracks subscription renewals, RDAP domain expiry, and TLS certificates.
             </p>
           </article>
 
@@ -439,9 +439,9 @@
 
           <article class="card">
             <span class="feature-tag">Disk</span>
-            <h3>Disk map and rebuildable folders</h3>
+            <h3>Disk map and worktree-safe cleanup</h3>
             <p>
-              Maps folder sizes across your home folder and attached drives, lists rebuildable <code>node_modules</code>, <code>DerivedData</code>, <code>.next</code>, and <code>target</code> directories, and moves git-ignored build folders to Trash only when confirmed.
+              Maps folder sizes across your home folder and attached drives, lists rebuildable <code>node_modules</code>, <code>DerivedData</code>, <code>.next</code>, and <code>target</code> directories, and moves git-ignored build folders to Trash only when confirmed — refusing any folder containing git worktrees or checkouts.
             </p>
           </article>
 
@@ -521,8 +521,8 @@
             <span class="tier-label ok">Applied immediately (revertible)</span>
             <h3>What agents can do directly</h3>
             <ul>
-              <li>Query project briefs, preflight verdicts, alerts, renewals, and CLI login mismatches without rescanning disk.</li>
-              <li>Use the <strong>Core (8 tools)</strong> profile to keep startup context small, or switch to <strong>All (28 tools)</strong> anytime.</li>
+              <li>Query single-call daily triage, project briefs, preflight verdicts, alerts, renewals, and CLI login mismatches without rescanning disk.</li>
+              <li>Use the <strong>Core (9 tools)</strong> profile to keep startup context small, or switch to <strong>All (29 tools)</strong> anytime.</li>
               <li>Add dated project notes, update non-archived project status, and record optional cross-agent session handoff reports.</li>
               <li>Every registry edit is a git commit with a <code>Via:</code> trailer that you can revert under <strong>Agents &gt; Changes</strong> (or <code>hq revert</code>).</li>
             </ul>
@@ -590,7 +590,7 @@
             <div>
               <h3>Read-only on scanned repositories</h3>
               <p>
-                HQ never moves, renames, or deletes files in your projects (except moving a git-ignored build folder to the Trash after you confirm). Git runs with hooks, fsmonitor, custom filters, and lazy fetches disabled, and evicted iCloud files are skipped.
+                HQ never moves, renames, or deletes files in your projects (except moving a git-ignored build folder without git worktrees to the Trash after you confirm). Git runs with hooks, fsmonitor, custom filters, and lazy fetches disabled, and evicted iCloud files are skipped.
               </p>
             </div>
           </article>
@@ -661,7 +661,7 @@
           <li class="step-card">
             <span class="step-num">4</span>
             <h3>Connect agents</h3>
-            <p>Optional setup for Claude Code, Codex, Cursor, Antigravity, and git — choose Core (8) or All (28) MCP tools, guard hooks, and session handoffs.</p>
+            <p>Optional setup for Claude Code, Codex, Cursor, Antigravity, and git — choose Core (9) or All (29) MCP tools, guard hooks, and session handoffs.</p>
           </li>
           <li class="step-card">
             <span class="step-num">5</span>
@@ -687,18 +687,18 @@
           <div class="install-box">
             <h3>Install</h3>
             <ol class="install-steps">
-              <li><strong>Download</strong> the latest <code data-release-title>HQ 0.16.0</code> zip archive below.</li>
+              <li><strong>Download</strong> the latest <code data-release-title>HQ 0.17.0</code> zip archive below.</li>
               <li><strong>Open the zip</strong> to unpack <code>HQ.app</code> and move it to your <strong>Applications</strong> folder.</li>
               <li><strong>Open HQ</strong> and walk through the 5-step Setup Guide.</li>
             </ol>
             <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
-              <a class="btn btn-primary btn-lg" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.16.0/HQ-0.16.0.zip">
+              <a class="btn btn-primary btn-lg" data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.17.0/HQ-0.17.0.zip">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                   <polyline points="7 10 12 15 17 10"/>
                   <line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
-                Download <span data-release-title>HQ 0.16.0</span> (.zip)
+                Download <span data-release-title>HQ 0.17.0</span> (.zip)
               </a>
               <a class="btn btn-secondary btn-lg" href="https://github.com/futogabor/hq-releases/releases/latest">View on GitHub</a>
             </div>
@@ -709,16 +709,21 @@
 
           <div class="release-notes-box">
             <div class="release-notes-head">
-              <h3>Latest release: <span data-release-title>HQ 0.16.0</span></h3>
-              <span id="release-notes-meta" class="release-notes-meta">Nov 27, 2026 · 20.7 MB · macOS 15+</span>
+              <h3>Latest release: <span data-release-title>HQ 0.17.0</span></h3>
+              <span id="release-notes-meta" class="release-notes-meta">Nov 28, 2026 · 21.2 MB · macOS 15+</span>
             </div>
             <div id="release-notes-body" class="release-notes-body">
+              <h3>Added</h3>
+              <ul>
+                <li><code>triage</code> MCP tool (included in both Core (9) and All (29) profiles) and <code>hq today</code> command: a single-call daily briefing of alert counts, prioritized do-first rows, multi-account CLI status and switch/isolation recipes, disk headroom and safe rebuildables, at-risk work, upcoming renewals, and active project momentum.</li>
+                <li>Credential-free multi-account resource memory (<code>AccountMemory</code>) remembered across refreshes so HQ still knows which account owns a project after switching CLIs, plus multi-account checks for Vercel teams, Google Cloud named configurations, AWS named profiles, DigitalOcean auth contexts, folder-scoped Firebase logins (<code>firebase login:use</code>), and <code>~/.ssh/config</code> host aliases.</li>
+                <li>Named <code>profile</code> support on project service links (<code>link_account</code>), <code>mise.toml</code> / <code>.mise.toml</code> project-auth hints, <code>gcloud</code> and AWS (<code>sam</code>/<code>cdk</code>/<code>serverless</code>/<code>sls</code>) deploy-hook coverage with inline override detection, and staged count plus bounded non-secret changed-file samples in git scans and project briefs.</li>
+              </ul>
               <h3>Fixed</h3>
               <ul>
-                <li>TLS certificate expiry checks work with the OpenSSL tool shipped with macOS.</li>
-                <li>Full and single-project refreshes report failed domain and certificate expiry checks and keep the last known dates for reminders.</li>
-                <li><code>bin/hq</code> uses the newest available HQ build for both CLI and MCP commands, including the installed app.</li>
-                <li>Release builds check the bundled app and CLI against the tagged source, and publishing updates the source branch and tag together.</li>
+                <li>Prevented HQ from marking regenerable folders (such as <code>build/</code>) as trashable when they contain git worktrees or checkouts, and stopped double-counting nested worktrees in <code>regenerableBytes</code>.</li>
+                <li>Collapsed multi-account global CLI login mismatches into one provider-level alert (with switch and per-repo isolation recipes) so they no longer flood Alerts or hide per-project risks in <code>doFirst</code>, while keeping <code>preflight</code> and <code>hq guard</code> strict before every push or deploy.</li>
+                <li>Excluded HQ's own local registry folder from raw at-risk/unregistered alerts, stopped treating paused projects with only a Supabase config and no live URL/web host as publicly deployed, used per-repo <code>GH_CONFIG_DIR</code> for Dependabot/visibility checks, and added advisory IDs, summaries, and major-version upgrade warnings to vulnerability alerts.</li>
               </ul>
             </div>
             <div class="release-notes-foot">
@@ -805,7 +810,7 @@
       </div>
 
       <nav class="footer-links" aria-label="Footer">
-        <a data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.16.0/HQ-0.16.0.zip">Download latest</a>
+        <a data-download-link href="https://github.com/futogabor/hq-releases/releases/download/v0.17.0/HQ-0.17.0.zip">Download latest</a>
         <a href="https://github.com/futogabor/hq-releases/releases">Releases</a>
         <a href="https://github.com/futogabor/hq-releases/issues">Feedback &amp; Issues</a>
         <a href="https://buymeacoffee.com/gaborfuto" rel="noopener">Buy Me a Coffee</a>

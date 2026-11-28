@@ -5,6 +5,26 @@
     <description>New versions of HQ.</description>
     <language>en</language>
     <item>
+      <title>HQ 0.17.0</title>
+      <pubDate>Sat, 28 Nov 2026 08:55:21 GMT</pubDate>
+      <sparkle:version>22</sparkle:version>
+      <sparkle:shortVersionString>0.17.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<h3>Added</h3>
+<ul>
+<li><code>triage</code> MCP tool (included in both Core (9) and All (29) profiles) and <code>hq today</code> command: a single-call daily briefing of alert counts, prioritized do-first rows, multi-account CLI status and switch/isolation recipes, disk headroom and safe rebuildables, at-risk work, upcoming renewals, and active project momentum.</li>
+<li>Credential-free multi-account resource memory (<code>AccountMemory</code>) remembered across refreshes so HQ still knows which account owns a project after switching CLIs, plus multi-account checks for Vercel teams, Google Cloud named configurations, AWS named profiles, DigitalOcean auth contexts, folder-scoped Firebase logins (<code>firebase login:use</code>), and <code>~/.ssh/config</code> host aliases.</li>
+<li>Named <code>profile</code> support on project service links (<code>link_account</code>), <code>mise.toml</code> / <code>.mise.toml</code> project-auth hints, <code>gcloud</code> and AWS (<code>sam</code>/<code>cdk</code>/<code>serverless</code>/<code>sls</code>) deploy-hook coverage with inline override detection, and staged count plus bounded non-secret changed-file samples in git scans and project briefs.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Prevented HQ from marking regenerable folders (such as <code>build/</code>) as trashable when they contain git worktrees or checkouts, and stopped double-counting nested worktrees in <code>regenerableBytes</code>.</li>
+<li>Collapsed multi-account global CLI login mismatches into one provider-level alert (with switch and per-repo isolation recipes) so they no longer flood Alerts or hide per-project risks in <code>doFirst</code>, while keeping <code>preflight</code> and <code>hq guard</code> strict before every push or deploy.</li>
+<li>Excluded HQ&#x27;s own local registry folder from raw at-risk/unregistered alerts, stopped treating paused projects with only a Supabase config and no live URL/web host as publicly deployed, used per-repo <code>GH_CONFIG_DIR</code> for Dependabot/visibility checks, and added advisory IDs, summaries, and major-version upgrade warnings to vulnerability alerts.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/futogabor/hq-releases/releases/download/v0.17.0/HQ-0.17.0.zip" type="application/octet-stream" sparkle:edSignature="zdH6ovStUbbct+GX95hf/lTbweCV0ZK4Cyv1JU5Voag3IObobzNP7b1448m+Khu5YGJLRmi+kVEQO/ESLznUAQ==" length="22228858"/>
+    </item>
+    <item>
       <title>HQ 0.16.0</title>
       <pubDate>Fri, 27 Nov 2026 19:51:36 GMT</pubDate>
       <sparkle:version>21</sparkle:version>
